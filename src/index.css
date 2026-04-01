@@ -13,6 +13,17 @@
     @apply bg-black text-white selection:bg-white selection:text-black overflow-x-hidden;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
   }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  * {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 }
 
 @layer utilities {
@@ -47,6 +58,38 @@ html.lenis, html.lenis body {
 
 .lenis.lenis-stopped {
   overflow: hidden;
+}
+
+@layer components {
+  .btn-velix {
+    @apply relative overflow-hidden h-12 px-8 rounded-full font-bold uppercase tracking-widest text-xs transition-all duration-500 ease-expo border border-white/20 outline-none flex items-center justify-center bg-zinc-900/50 text-white;
+    isolation: isolate;
+  }
+
+  .btn-velix::before {
+    content: '';
+    @apply absolute top-1/2 left-1/2 w-[120%] aspect-square bg-white rounded-full;
+    transform: translate(-50%, 50%);
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: -1;
+  }
+
+  .btn-velix:hover::before {
+    transform: translate(-50%, -50%);
+  }
+
+  .btn-velix:hover {
+    @apply text-black border-white;
+  }
+
+  /* Large versions used in Work/Services pages */
+  .btn-velix-lg {
+    @apply h-20 px-16 text-lg;
+  }
+
+  .ease-expo {
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  }
 }
 
 .lenis.lenis-scrolling iframe {
