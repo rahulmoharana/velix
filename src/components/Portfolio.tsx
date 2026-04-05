@@ -69,7 +69,7 @@ export const Portfolio = () => {
             <div 
               key={i} 
               className={cn(
-                "w-8 h-[1px] bg-white transition-all duration-500",
+                "w-8 h-px bg-white transition-all duration-500",
                 activeIndex === i ? "w-16 opacity-100" : "opacity-30"
               )} 
             />

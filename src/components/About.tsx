@@ -70,10 +70,10 @@ export const About = () => {
           <div ref={textRef} className="grid md:grid-cols-2 gap-12 md:gap-24 items-start">
             <div className="flex flex-col gap-8">
               <p className="about-para text-xl md:text-2xl text-white font-light leading-relaxed">
-                Velix Tech is a Bhubaneswar-based IT startup focused on building modern digital solutions that help businesses establish a strong online presence, improve credibility, and grow in competitive markets.
+                Velix Tech is the leading <span className="text-white font-medium">website creation agency in Bhubaneswar, Odisha</span>, specialized in building modern digital solutions that help businesses establish a powerful online presence.
               </p>
               <p className="about-para text-lg text-zinc-400 font-light leading-relaxed">
-                From strategic website design to full-stack development, we create digital products that combine performance, usability, and business impact. We work with startups, local businesses, and growing brands to deliver websites, landing pages, and scalable web applications designed for real-world results.
+                As a premier <span className="text-zinc-200 font-medium">software developer agency</span>, we create high-performance websites, strategic branding, and scalable applications designed for growth in Odisha and global markets.
               </p>
             </div>
 

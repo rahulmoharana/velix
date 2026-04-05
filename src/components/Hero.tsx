@@ -73,7 +73,7 @@ export const Hero = () => {
           </h1>
 
           <p className="max-w-2xl text-md md:text-lg text-zinc-400 font-light leading-relaxed">
-            We help ambitious businesses create high-performing websites, strategic branding, and digital experiences that strengthen visibility, attract customers, and position brands for growth in competitive markets across India and global audiences.
+            As a premier <span className="text-white font-medium">software developer agency in Bhubaneswar, Odisha</span>, we help ambitious businesses create high-performing websites, strategic branding, and digital experiences that strengthen visibility and attract customers in competitive markets.
           </p>
 
           <div className="flex flex-wrap gap-6 items-center">

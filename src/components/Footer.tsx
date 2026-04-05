@@ -8,7 +8,7 @@ export const Footer = () => {
         <div>
           <span className="font-display font-black text-4xl tracking-tighter uppercase mb-6 block scale-x-110 origin-left">VELIX</span>
           <p className="text-zinc-500 max-w-sm font-mono text-xs uppercase tracking-widest mt-4">
-            Pushing the boundaries of digital experiences through design and code.
+            Pushing the boundaries of digital experiences in <span className="text-zinc-300">Bhubaneswar, Odisha</span>.
           </p>
         </div>
         

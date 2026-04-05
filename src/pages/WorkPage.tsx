@@ -90,7 +90,7 @@ const WorkPage = () => {
             </div>
             <div className="relative aspect-square bg-zinc-900 overflow-hidden rounded-2xl group">
                {/* Decorative SEO Image / Graphic */}
-               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50" />
+               <div className="absolute inset-0 bg-linear-to-br from-white/10 to-transparent opacity-50" />
                <div className="absolute inset-0 flex items-center justify-center p-12">
                   <div className="text-[20vw] font-black text-white/5 select-none uppercase tracking-tighter rotate-12">
                      VELIX

@@ -81,11 +81,11 @@ const ServicesPage = () => {
               animate={{ opacity: 1, y: 0 }}
               className="text-[10vw] md:text-[7vw] font-display font-black uppercase tracking-tighter leading-none mb-8"
             >
-              Crafting Digital <br />
-              <span className="text-zinc-500 italic">Excellence.</span>
+              The Premier <br />
+              Digital <span className="text-zinc-500 italic">Agency.</span>
             </motion.h1>
             <p className="max-w-2xl text-xl text-zinc-400 font-light leading-relaxed">
-              We provide end-to-end digital solutions designed to help businesses scale. Our process is rooted in technical precision and design clarity.
+              VELIX is the leading <span className="text-white font-medium">website creation agency in Bhubaneswar, Odisha</span>. We provide end-to-end digital solutions and <span className="text-zinc-200 font-medium">software development</span> designed to help businesses scale with precision.
             </p>
           </div>
           {/* Decorative background element */}
@@ -127,7 +127,7 @@ const ServicesPage = () => {
            <h2 className="text-[12vw] md:text-[8vw] font-display font-black uppercase tracking-tighter leading-none mb-12">
               Ready to <br /><span className="text-zinc-600">Upgrade?</span>
            </h2>
-           <button className="btn-velix btn-velix-lg">
+           <button className="btn-velix mx-auto btn-velix-lg">
               <span>Start Project</span>
            </button>
         </section>
