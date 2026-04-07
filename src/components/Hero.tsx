@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,7 +13,8 @@ import {
   TrendingUp,
   Palette,
   Search,
-  Smartphone
+  Smartphone,
+  Phone
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -49,7 +51,7 @@ export const Hero = () => {
   }, { scope: container });
 
   return (
-    <section ref={container} className="relative min-h-screen flex flex-col justify-center pt-32 pb-20 px-6 md:px-12 overflow-hidden bg-[#000]">
+    <section ref={container} className="relative min-h-screen flex flex-col justify-center pt-32 pb-20 px-6 md:px-12 overflow-hidden bg-black">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-white/5 blur-[120px] rounded-full" />
@@ -77,21 +79,34 @@ export const Hero = () => {
           </p>
 
           <div className="flex flex-wrap gap-6 items-center">
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest transition-all hover:bg-zinc-200 shadow-xl shadow-white/5"
-            >
-              Start Project
-              <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </motion.button>
-            <motion.button 
-              whileHover={{ backgroundColor: "rgba(255,255,255,0.05)" }}
-              className="group flex items-center gap-3 border border-white/20 px-8 py-4 rounded-full font-bold uppercase tracking-widest transition-all"
-            >
-              Our Work
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+            <Link to="/contact">
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group flex items-center gap-3 bg-zinc-900 text-white border border-white/20 px-8 py-4 rounded-full font-bold uppercase tracking-widest transition-all hover:bg-white hover:text-black shadow-xl shadow-white/5"
+              >
+                Start Project
+                <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </motion.button>
+            </Link>
+            <Link to="/work">
+              <motion.button 
+                whileHover={{ backgroundColor: "rgba(255,255,255,0.05)" }}
+                className="group flex items-center gap-3 border border-white/20 px-8 py-4 rounded-full font-bold uppercase tracking-widest transition-all"
+              >
+                Our Work
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </Link>
+            <a href="https://wa.me/918249040033" target="_blank" rel="noopener noreferrer">
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 px-6 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] text-green-500 hover:bg-green-500 hover:text-white transition-all"
+              >
+                <span>WhatsApp</span>
+                <Phone className="w-3 h-3" />
+              </motion.button>
+            </a>
           </div>
 
           {/* Stats Cards */}
@@ -105,7 +120,7 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.8, rotateY: 20 }}
             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] aspect-[4/3] bg-zinc-900/80 rounded-3xl border border-white/10 backdrop-blur-xl shadow-2xl overflow-hidden group"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] aspect-4/3 bg-zinc-900/80 rounded-3xl border border-white/10 backdrop-blur-xl shadow-2xl overflow-hidden group"
           >
             <div className="h-12 border-b border-white/10 flex items-center px-6 gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500/50" />

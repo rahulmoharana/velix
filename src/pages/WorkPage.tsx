@@ -1,13 +1,11 @@
 import React, { useRef } from 'react';
-import { Navbar } from '../components/Navbar';
-import { Footer } from '../components/Footer';
+import { Link } from 'react-router-dom';
 import { Portfolio } from '../components/Portfolio';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+import { SEO } from '../components/SEO';
 
 const WorkPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -35,16 +33,19 @@ const WorkPage = () => {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-[#080805] text-white selection:bg-white selection:text-black">
-      <Navbar />
-      
-      <main>
+    <div ref={containerRef} className="bg-[#080805] text-white selection:bg-white selection:text-black">
+      <SEO 
+        title="Portfolio | Featured Digital Experiences and Software Projects by VELIX"
+        description="A showcase of our digital craftsmanship. Explore high-performance SaaS platforms, immersive brand experiences, and custom web development by VELIX."
+        url="https://velix.tech/work"
+      />
+      <div>
         {/* SEO Focused Hero Section */}
         <section className="pt-32 pb-20 px-6 md:px-12 flex flex-col items-center">
           <div className="overflow-hidden mb-8">
             <h1 className="work-title text-[15vw] md:text-[10vw] font-display font-black uppercase tracking-tighter leading-none flex gap-4">
               <span>Selected</span>
-              <span className="text-zinc-800">Works.</span>
+              <span className="text-zinc-400">Works.</span>
             </h1>
           </div>
           
@@ -72,7 +73,7 @@ const WorkPage = () => {
             <div>
               <h2 className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tighter mb-8">
                 Building the digital <br />
-                <span className="text-zinc-500 italic">standard of Odisha.</span>
+                <span className="text-zinc-400 italic">standard of Odisha.</span>
               </h2>
               <p className="text-zinc-400 text-lg mb-8 font-light leading-relaxed">
                 As a Bhubaneswar-based startup, Velix Tech bridges the gap between local enterprise and global digital trends. Our work is optimized for core web vitals, accessibility, and high conversion, ensuring your business stays ahead in India's booming digital economy.
@@ -105,19 +106,20 @@ const WorkPage = () => {
         </section>
 
         {/* Call to Action */}
-        <section className="py-40 px-6 text-center bg-white text-black">
+        <section className="py-40 px-6 text-center bg-[#0a0a0a] text-white">
            <h2 className="text-5xl md:text-8xl font-display font-black uppercase tracking-tighter mb-12">
-              Ready to <br />elevate yours?
+              Ready to <br /><span className="text-zinc-400">elevate yours?</span>
            </h2>
-           <button className="btn-velix btn-velix-lg">
-              <span>Start Project</span>
-           </button>
+           <Link to="/contact">
+             <button className="btn-velix mx-auto btn-velix-lg">
+                <span>Start Project</span>
+             </button>
+           </Link>
         </section>
-      </main>
-
-      <Footer />
+      </div>
     </div>
   );
 };
 
 export default WorkPage;
+

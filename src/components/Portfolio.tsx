@@ -108,7 +108,7 @@ export const Portfolio = () => {
               <img 
                 key={i}
                 src={p.image} 
-                alt={p.name} 
+                alt={`${p.name} - Professional Digital Project by VELIX`} 
                 className={cn(
                   "absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out",
                   activeIndex === i ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-110 rotate-3"

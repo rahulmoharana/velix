@@ -28,9 +28,11 @@ export const Navbar = () => {
         <Link to="/about-us" className="hover:opacity-50 transition-opacity">About</Link>
         <Link to="/contact" className="hover:opacity-50 transition-opacity">Contact</Link>
       </div>
-      <button className="btn-velix">
-        <span>Start Project</span>
-      </button>
+      <Link to="/contact">
+        <button className="btn-velix">
+          <span>Start Project</span>
+        </button>
+      </Link>
     </nav>
   );
 };

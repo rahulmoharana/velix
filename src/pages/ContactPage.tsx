@@ -1,13 +1,10 @@
 import React, { useRef } from 'react';
-import { Navbar } from '../components/Navbar';
-import { Footer } from '../components/Footer';
 import { Contact } from '../components/Contact';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+import { SEO } from '../components/SEO';
 
 const ContactPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -41,10 +38,13 @@ const ContactPage = () => {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
-      <Navbar />
-      
-      <main className="pt-32 pb-20">
+    <div ref={containerRef} className="bg-black text-white selection:bg-white selection:text-black">
+      <SEO 
+        title="Get in Touch | Start Your Digital Transformation with VELIX"
+        description="Ready to build something remarkable? Contact VELIX for premium web design, software development, and digital strategy in Bhubaneswar, Odisha."
+        url="https://velix.tech/contact"
+      />
+      <div className="pt-32 pb-20">
         <section className="px-6 md:px-12 mb-20">
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
@@ -68,8 +68,8 @@ const ContactPage = () => {
             
             <div className="contact-info-item pr-12 border-b border-white/10 pb-12">
               <h3 className="text-xs font-mono uppercase tracking-[0.3em] text-zinc-500 mb-4">Connect</h3>
-              <a href="mailto:hello@velix.tech" className="text-2xl font-bold uppercase tracking-tight hover:italic transition-all">hello@velix.tech</a>
-              <p className="text-zinc-500 mt-2 font-light">Response time: Usually within 12 hours.</p>
+              <a href="mailto:velixtechsolutions@gmail.com" className="text-2xl font-bold uppercase tracking-tight hover:italic transition-all">velixtechsolutions@gmail.com</a>
+              <p className="text-zinc-500 mt-2 font-light">WhatsApp: <span className="text-white">+91 824 904 0033</span></p>
             </div>
 
             <div className="contact-info-item">
@@ -86,11 +86,10 @@ const ContactPage = () => {
              <Contact />
           </div>
         </section>
-      </main>
-
-      <Footer />
+      </div>
     </div>
   );
 };
 
 export default ContactPage;
+

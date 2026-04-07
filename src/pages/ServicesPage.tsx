@@ -1,13 +1,11 @@
 import React, { useRef } from 'react';
-import { Navbar } from '../components/Navbar';
-import { Footer } from '../components/Footer';
+import { Link } from 'react-router-dom';
 import { Services } from '../components/Services';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+import { SEO } from '../components/SEO';
 
 const ServicesPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -70,10 +68,13 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
-      <Navbar />
-      
-      <main className="pt-32 pb-20">
+    <div ref={containerRef} className="bg-black text-white selection:bg-white selection:text-black">
+      <SEO 
+        title="Premium Web Design & Development Services in Bhubaneswar | VELIX"
+        description="Explore our range of digital services including strategic web design, full-stack development, and startup acceleration. VELIX is your partner for technical precision and design clarity."
+        url="https://velix.tech/services"
+      />
+      <div className="pt-32 pb-20">
         <section className="px-6 md:px-12 mb-20 relative overflow-hidden h-[40vh] md:h-[60vh] flex items-center">
           <div className="max-w-4xl z-10 relative">
             <motion.h1 
@@ -82,7 +83,7 @@ const ServicesPage = () => {
               className="text-[10vw] md:text-[7vw] font-display font-black uppercase tracking-tighter leading-none mb-8"
             >
               The Premier <br />
-              Digital <span className="text-zinc-500 italic">Agency.</span>
+              Digital <span className="text-zinc-400 italic">Agency.</span>
             </motion.h1>
             <p className="max-w-2xl text-xl text-zinc-400 font-light leading-relaxed">
               VELIX is the leading <span className="text-white font-medium">website creation agency in Bhubaneswar, Odisha</span>. We provide end-to-end digital solutions and <span className="text-zinc-200 font-medium">software development</span> designed to help businesses scale with precision.
@@ -98,20 +99,20 @@ const ServicesPage = () => {
         </div>
 
         {/* Deep Dive Section */}
-        <section className="py-40 px-6 md:px-12 bg-white text-black">
+        <section className="py-40 px-6 md:px-12 bg-[#0a0a0a] text-white">
           <div className="max-w-7xl mx-auto flex flex-col gap-32">
             {serviceCategories.map((cat, idx) => (
-              <div key={idx} className="service-long-item grid lg:grid-cols-2 gap-20 items-start border-b border-black/10 pb-32">
+              <div key={idx} className="service-long-item grid lg:grid-cols-2 gap-20 items-start border-b border-white/10 pb-32">
                 <div>
                    <span className="text-xs font-mono uppercase tracking-widest mb-4 block opacity-50">Expertise / 0{idx + 1}</span>
                    <h2 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tighter mb-8">{cat.title}</h2>
-                   <p className="text-xl md:text-2xl font-light leading-relaxed">{cat.desc}</p>
+                   <p className="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed">{cat.desc}</p>
                 </div>
                 <div className="features-container space-y-8 lg:pt-12">
-                   <p className="text-xs font-mono uppercase tracking-[0.3em] font-bold">Key Focus Areas</p>
+                   <p className="text-xs font-mono uppercase tracking-[0.3em] font-bold text-zinc-400">Key Focus Areas</p>
                    <div className="flex flex-wrap gap-4">
                       {cat.features.map((f, i) => (
-                         <div key={i} className="feature-pill border border-black/20 px-6 py-2 rounded-full text-sm font-medium uppercase tracking-widest italic group hover:bg-black hover:text-white transition-all cursor-default">
+                         <div key={i} className="feature-pill border border-white/20 px-6 py-2 rounded-full text-sm font-medium uppercase tracking-widest italic group hover:bg-white hover:text-black transition-all cursor-default">
                             {f}
                          </div>
                       ))}
@@ -125,17 +126,18 @@ const ServicesPage = () => {
         {/* Final CTA */}
         <section className="py-40 text-center px-6">
            <h2 className="text-[12vw] md:text-[8vw] font-display font-black uppercase tracking-tighter leading-none mb-12">
-              Ready to <br /><span className="text-zinc-600">Upgrade?</span>
+              Ready to <br /><span className="text-zinc-400">Upgrade?</span>
            </h2>
-           <button className="btn-velix mx-auto btn-velix-lg">
-              <span>Start Project</span>
-           </button>
+           <Link to="/contact">
+             <button className="btn-velix mx-auto btn-velix-lg">
+                <span>Start Project</span>
+             </button>
+           </Link>
         </section>
-      </main>
-
-      <Footer />
+      </div>
     </div>
   );
 };
 
 export default ServicesPage;
+
