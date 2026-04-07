@@ -98,15 +98,6 @@ export const Hero = () => {
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </Link>
-            <a href="https://wa.me/918249040033" target="_blank" rel="noopener noreferrer">
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 px-6 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] text-green-500 hover:bg-green-500 hover:text-white transition-all"
-              >
-                <span>WhatsApp</span>
-                <Phone className="w-3 h-3" />
-              </motion.button>
-            </a>
           </div>
 
           {/* Stats Cards */}

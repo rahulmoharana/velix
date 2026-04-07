@@ -35,7 +35,7 @@ const ServiceCard = ({ icon: Icon, title, description, index, className }: any) 
         {title}
       </h3>
       
-      <p className="text-sm text-zinc-500 font-mono uppercase tracking-wider leading-relaxed max-w-[280px]">
+      <p className="text-sm text-zinc-400 font-mono uppercase tracking-wider leading-relaxed max-w-[280px]">
         {description}
       </p>
 
@@ -133,7 +133,7 @@ export const Services = () => {
     <section id="services" ref={container} className="relative md:h-[400vh] bg-black">
       <div ref={inner} className="md:h-screen flex flex-col items-center justify-center overflow-hidden px-6 md:px-12 py-24 md:py-0">
         <div className="text-center z-20 mb-12 md:mb-16 shrink-0">
-          <h2 className="text-sm font-mono uppercase tracking-[0.3em] opacity-50 mb-4">What We Offer</h2>
+          <h2 className="text-sm font-mono uppercase tracking-[0.3em] opacity-70 mb-4">What We Offer</h2>
           <h3 className="heading-xl origin-center scale-x-105">SERVICES</h3>
         </div>
         
@@ -148,16 +148,16 @@ export const Services = () => {
                 title={s.title} 
                 description={s.description} 
                 index={i} 
-                className="!max-w-none aspect-square md:aspect-[3/4] h-auto md:max-h-[60vh] py-12 md:py-16"
+                className="max-w-none! aspect-square md:aspect-3/4 h-auto md:max-h-[60vh] py-12 md:py-16"
               />
             </div>
           ))}
         </div>
 
         {/* Progress Indicator */}
-        <div className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 items-center gap-4 opacity-20">
+        <div className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 items-center gap-4 opacity-40">
           <span className="text-[10px] font-mono uppercase tracking-widest">Workflow Sequence</span>
-          <div className="w-48 h-[1px] bg-white" />
+          <div className="w-48 h-px bg-white" />
           <span className="text-[10px] font-mono">01 — 04</span>
         </div>
       </div>

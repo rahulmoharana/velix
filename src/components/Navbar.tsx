@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../lib/utils';
+import { motion, useScroll, useMotionValueEvent } from 'motion/react';
 
 export const Navbar = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const { scrollY } = useScroll();
+  const [hidden, setHidden] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+     const previous = scrollY.getPrevious() ?? 0;
+     if (latest > previous && latest > 150) {
+        setHidden(true);
+     } else {
+        setHidden(false);
+     }
+  });
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 mix-blend-difference">
+    <motion.nav 
+      variants={{
+         visible: { y: 0 },
+         hidden: { y: "-100%" }
+      }}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+      className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 mix-blend-difference"
+    >
       <div className="flex items-center gap-2">
         <Link to="/" className="font-display font-black text-2xl tracking-tighter uppercase scale-x-110 origin-left">VELIX</Link>
       </div>
@@ -33,6 +53,6 @@ export const Navbar = () => {
           <span>Start Project</span>
         </button>
       </Link>
-    </nav>
+    </motion.nav>
   );
 };

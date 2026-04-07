@@ -13,6 +13,7 @@ import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { SmoothScroll } from "./components/SmoothScroll";
 import { SEO } from "./components/SEO";
+import { FloatingWhatsApp } from "./components/FloatingWhatsApp";
 import AboutPage from "./pages/AboutPage";
 import WorkPage from "./pages/WorkPage";
 import ServicesPage from "./pages/ServicesPage";
@@ -29,6 +30,7 @@ const Layout = () => {
         <Outlet />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 };
