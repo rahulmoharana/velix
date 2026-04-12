@@ -1,8 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '../lib/utils';
+import { motion, AnimatePresence } from 'motion/react';
 
 // Import local assets
 import quickAiImg from '../assets/1-QuickAi.png';
@@ -10,10 +11,31 @@ import splytImg from '../assets/2-Splyt.png';
 import sundownImg from '../assets/3-Sundown.png';
 import twogoodImg from '../assets/4-twofoodco.png';
 
+const Marquee = ({ text }: { text: string }) => {
+  return (
+    <div className="flex overflow-hidden whitespace-nowrap bg-black h-full items-center">
+      <div className="flex animate-marquee py-2">
+        {[...Array(15)].map((_, i) => (
+          <span key={i} className="text-white text-lg md:text-xl font-display font-bold uppercase tracking-widest mx-3">
+            {text} —
+          </span>
+        ))}
+      </div>
+      <div className="flex animate-marquee py-2" aria-hidden="true">
+        {[...Array(15)].map((_, i) => (
+          <span key={i} className="text-white text-lg md:text-xl font-display font-bold uppercase tracking-widest mx-3">
+            {text} —
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export const Portfolio = () => {
-  const container = useRef<HTMLDivElement>(null);
-  const inner = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const projects = [
     { name: "quick AI", link: "https://ai-saas-nine-rosy.vercel.app/", image: quickAiImg },
@@ -22,108 +44,113 @@ export const Portfolio = () => {
     { name: "Twogood", link: "https://rahulmoharana.github.io/two-good-co-clone/", image: twogoodImg }
   ];
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   useGSAP(() => {
-    // Pin the entire inner section
-    ScrollTrigger.create({
-      trigger: container.current,
-      start: "top top",
-      end: "bottom bottom",
-      pin: inner.current,
-      pinSpacing: false,
-    });
-
-    // Update active index based on scroll
-    projects.forEach((_, i) => {
-      ScrollTrigger.create({
-        trigger: container.current,
-        start: () => `top+=${(i * window.innerHeight * 0.5)} top`,
-        end: () => `top+=${((i + 1) * window.innerHeight * 0.5)} top`,
-        onToggle: self => self.isActive && setActiveIndex(i),
-      });
-    });
-
-    // Animate the image container
-    gsap.fromTo('.project-preview', 
-      { opacity: 0, x: 50 },
-      { 
-        opacity: 1, 
-        x: 0, 
-        duration: 0.5, 
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 80%",
-          end: "top 40%",
-          scrub: 2
-        }
+    gsap.from('.project-item', {
+      y: 50,
+      opacity: 0,
+      stagger: 0.15,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 85%",
       }
-    );
-  }, { scope: container });
+    });
+  }, { scope: containerRef });
 
   return (
-    <section id="work" ref={container} className="relative h-[400vh] bg-[#080805]">
-      <div ref={inner} className="h-screen flex items-center justify-between px-6 md:px-24 overflow-hidden">
-        
-        {/* Left: Progress Indicator */}
-        <div className="hidden lg:flex flex-col gap-2 opacity-20">
-          {projects.map((_, i) => (
-            <div 
-              key={i} 
-              className={cn(
-                "w-8 h-px bg-white transition-all duration-500",
-                activeIndex === i ? "w-16 opacity-100" : "opacity-30"
-              )} 
+    <section id="work" ref={containerRef} className="relative py-12 md:py-20 bg-white px-4 md:px-12 overflow-hidden">
+      {/* Small Heading */}
+      <div className="flex flex-col gap-1 mb-10">
+        <span className="text-[8px] font-mono uppercase tracking-[0.5em] text-zinc-400">
+           Gallery / Selected
+        </span>
+        <h2 className="text-lg md:text-xl font-display font-bold uppercase tracking-tighter text-black">
+           Our Work
+        </h2>
+      </div>
+
+      {/* Projects List */}
+      <div className="relative z-10">
+        {projects.map((p, i) => (
+          <a 
+            key={i}
+            href={p.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-item group relative block border-b border-zinc-50 overflow-hidden"
+            onMouseEnter={() => setHoveredIndex(i)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            {/* Top Layer (Default state) */}
+            <div className="flex items-center justify-between py-4 md:py-6 px-1 transition-transform duration-700 group-hover:-translate-y-full">
+               <div className="flex items-center gap-4">
+                  <span className="text-[9px] font-mono text-zinc-300">0{i+1}</span>
+                  <h3 className="text-lg md:text-xl lg:text-3xl font-display font-medium uppercase tracking-tight text-black">
+                    {p.name}
+                  </h3>
+               </div>
+               <span className="text-[8px] font-mono uppercase tracking-widest text-zinc-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                  Full View ↗
+               </span>
+            </div>
+
+            {/* Bottom Overlay (Hover state) */}
+            <div className="absolute inset-x-0 bottom-0 h-full translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[0.76, 0, 0.24, 1]">
+               <Marquee text={p.name} />
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {/* Sticky/Floating Image Preview (Smaller) */}
+      <motion.div 
+        className="fixed top-0 left-0 pointer-events-none z-50 w-[240px] md:w-[300px] aspect-[4/3] rounded-xl overflow-hidden shadow-2xl border border-white/10"
+        animate={{
+          x: mousePos.x - 120,
+          y: mousePos.y - 90,
+          scale: hoveredIndex !== null ? 1 : 0,
+          rotate: hoveredIndex !== null ? 1 : 0,
+        }}
+        transition={{ type: "spring", stiffness: 150, damping: 25, mass: 0.5 }}
+      >
+        <AnimatePresence mode="wait">
+          {hoveredIndex !== null && (
+            <motion.img 
+              key={hoveredIndex}
+              src={projects[hoveredIndex].image}
+              alt={projects[hoveredIndex].name}
+              className="w-full h-full object-cover"
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
             />
-          ))}
-        </div>
+          )}
+        </AnimatePresence>
+      </motion.div>
 
-        {/* Center: Project Titles */}
-        <div className="flex flex-col items-center justify-center flex-1">
-          <div className="flex flex-col items-center gap-4">
-            {projects.map((p, i) => (
-              <a 
-                key={i}
-                href={p.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  "text-3xl md:text-5xl lg:text-6xl font-display font-bold uppercase tracking-tighter transition-all duration-700 cursor-pointer text-center max-w-4xl",
-                  activeIndex === i ? "text-white scale-105" : "text-white/10 scale-95 blur-[2px]"
-                )}
-              >
-                {p.name}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* Right: Project Preview */}
-        <a 
-          href={projects[activeIndex].link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:flex flex-col items-start gap-4 w-[350px]"
-        >
-          <div className="project-preview relative aspect-square w-full overflow-hidden rounded-lg bg-zinc-900 border border-white/5">
-            {projects.map((p, i) => (
-              <img 
-                key={i}
-                src={p.image} 
-                alt={`${p.name} - Professional Digital Project by VELIX`} 
-                className={cn(
-                  "absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out",
-                  activeIndex === i ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-110 rotate-3"
-                )}
-                referrerPolicy="no-referrer"
-              />
-            ))}
-          </div>
-          <div className="flex items-center gap-2 text-sm font-mono uppercase tracking-widest opacity-60 hover:opacity-100 transition-opacity cursor-pointer group">
-            <span className="text-lg">↳</span>
-            <span className="group-hover:translate-x-1 transition-transform">Visit Site</span>
-          </div>
-        </a>
-
+      {/* Background Decor */}
+      <div className="absolute bottom-10 right-10 text-[10px] font-mono text-zinc-200 uppercase tracking-[1em] vertical-text">
+         CURATED PROJECTS
       </div>
     </section>
   );
 };
+
+// Add global CSS for marquee in index.css if not present
+// @keyframes marquee {
+//   0% { transform: translateX(0); }
+//   100% { transform: translateX(-50%); }
+// }
+// .animate-marquee {
+//   animation: marquee 10s linear infinite;
+// }

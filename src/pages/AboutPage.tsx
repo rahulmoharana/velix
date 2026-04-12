@@ -58,18 +58,18 @@ const AboutPage = () => {
         description="Learn about VELIX, the leading digital agency in Bhubaneswar. Discover our mission, core values, and our expertise in strategic design and future-proof technology."
         url="https://velix.tech/about-us"
       />
-      <div className="pt-24 lg:pt-32">
-        <div className="px-6 md:px-12 mb-12 flex justify-center">
+      <div className="pt-24 md:pt-32">
+        <div className="px-6 md:px-12 mb-12 flex justify-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "circOut" }}
             className="hero-title"
           >
-            <h1 className="text-[12vw] md:text-[8vw] font-display font-black uppercase tracking-tighter leading-[0.85]">
+            <h1 className="text-[18vw] md:text-[8vw] font-display font-black uppercase tracking-tighter leading-[0.85]">
               Velix<br />Tech.
             </h1>
-            <p className="mt-8 text-zinc-400 font-mono uppercase tracking-widest text-xs">
+            <p className="mt-8 text-zinc-500 font-mono uppercase tracking-widest text-[10px]">
               Based in Bhubaneswar / Innovating for India
             </p>
           </motion.div>
@@ -78,57 +78,44 @@ const AboutPage = () => {
         <About />
         
         {/* Expertise Section */}
-        <section className="py-32 px-6 md:px-12 bg-[#0a0a0a] text-white">
+        <section className="py-20 md:py-32 px-6 md:px-12 bg-[#0a0a0a] text-white">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tighter mb-16">Expertise</h2>
-            <div className="grid md:grid-cols-2 gap-x-24 gap-y-12">
-              <div className="border-t border-white/10 pt-8 expertise-card">
-                <span className="text-xs font-mono uppercase tracking-widest mb-4 block opacity-50">01</span>
-                <h3 className="text-2xl font-bold uppercase mb-4">Strategic Design</h3>
-                <p className="text-zinc-400 font-light leading-relaxed">We don't just make things look pretty. We design with purpose, ensuring every pixel serves a business goal and enhances user trust.</p>
-              </div>
-              <div className="border-t border-white/10 pt-8 expertise-card">
-                <span className="text-xs font-mono uppercase tracking-widest mb-4 block opacity-50">02</span>
-                <h3 className="text-2xl font-bold uppercase mb-4">Future-Proof Tech</h3>
-                <p className="text-zinc-400 font-light leading-relaxed">Using React, Next.js, and modern cloud architectures, we build scalable applications that grow alongside your business.</p>
-              </div>
-              <div className="border-t border-white/10 pt-8 expertise-card">
-                <span className="text-xs font-mono uppercase tracking-widest mb-4 block opacity-50">03</span>
-                <h3 className="text-2xl font-bold uppercase mb-4">Performance First</h3>
-                <p className="text-zinc-400 font-light leading-relaxed">Speed is a feature. We optimize every build for core web vitals, ensuring lightning-fast load times across all devices.</p>
-              </div>
-              <div className="border-t border-white/10 pt-8 expertise-card">
-                <span className="text-xs font-mono uppercase tracking-widest mb-4 block opacity-50">04</span>
-                <h3 className="text-2xl font-bold uppercase mb-4">Local Context</h3>
-                <p className="text-zinc-400 font-light leading-relaxed">Deeply rooted in the Bhubaneswar startup ecosystem, we understand the specific challenges and opportunities within the Indian market.</p>
-              </div>
+            <h2 className="text-3xl md:text-6xl font-display font-black uppercase tracking-tighter mb-12 md:mb-16">Expertise</h2>
+            <div className="grid md:grid-cols-2 gap-x-12 md:gap-x-24 gap-y-12">
+              {[
+                { title: "Strategic Design", desc: "We design with purpose, ensuring every pixel serves a business goal." },
+                { title: "Future-Proof Tech", desc: "Using React and modern cloud architectures, we build scalable platforms." },
+                { title: "Performance First", desc: "Speed is a feature. We optimize every build for core web vitals." },
+                { title: "Local Context", desc: "Rooted in Bhubaneswar, we understand the specific Indian market challenges." }
+              ].map((item, idx) => (
+                <div key={idx} className="border-t border-white/10 pt-8 expertise-card">
+                  <span className="text-[10px] font-mono uppercase tracking-widest mb-4 block opacity-50">0{idx + 1}</span>
+                  <h3 className="text-xl md:text-2xl font-bold uppercase mb-4">{item.title}</h3>
+                  <p className="text-zinc-500 font-light leading-relaxed text-sm md:text-base">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Values Section */}
-        <section className="py-32 px-6 md:px-12 bg-zinc-900/30">
+        <section className="py-20 md:py-32 px-6 md:px-12 bg-zinc-900/10">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-zinc-400 font-mono uppercase tracking-widest text-xs mb-12">Core Values</h2>
-            <div className="grid md:grid-cols-3 gap-12 values-grid">
-            <div className="value-item">
-              <h4 className="text-zinc-400 font-mono uppercase tracking-widest text-xs mb-4">Values</h4>
-              <h3 className="text-2xl font-bold uppercase tracking-tight">Technical Precision</h3>
-              <p className="text-zinc-400 mt-4 font-light">We don't just build, we engineer. Every line of code is written with performance and scalability in mind.</p>
-            </div>
-            <div className="value-item">
-              <h4 className="text-zinc-400 font-mono uppercase tracking-widest text-xs mb-4">Values</h4>
-              <h3 className="text-2xl font-bold uppercase tracking-tight">Design Clarity</h3>
-              <p className="text-zinc-400 mt-4 font-light">Minimalism with impact. We believe in clear communication and avant-garde aesthetics.</p>
-            </div>
-            <div className="value-item">
-              <h4 className="text-zinc-400 font-mono uppercase tracking-widest text-xs mb-4">Values</h4>
-              <h3 className="text-2xl font-bold uppercase tracking-tight">Local Impact</h3>
-              <p className="text-zinc-400 mt-4 font-light">Based in Bhubaneswar, we are committed to elevating the digital landscape of Odisha and India.</p>
+            <h2 className="text-zinc-500 font-mono uppercase tracking-widest text-[10px] mb-12">Core Values</h2>
+            <div className="grid md:grid-cols-3 gap-10 md:gap-12 values-grid">
+               {[
+                 { title: "Precision", desc: "Every line of code is written with performance and scalability in mind." },
+                 { title: "Clarity", desc: "Minimalism with impact. We believe in clear communication." },
+                 { title: "Impact", desc: "Committed to elevating the digital landscape of Odisha." }
+               ].map((item, idx) => (
+                <div key={idx} className="value-item">
+                  <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight mb-4">{item.title}</h3>
+                  <p className="text-zinc-500 font-light text-sm md:text-base">{item.desc}</p>
+                </div>
+               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
     </div>
   </div>
 );

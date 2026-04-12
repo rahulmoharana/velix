@@ -74,45 +74,43 @@ const ServicesPage = () => {
         description="Explore our range of digital services including strategic web design, full-stack development, and startup acceleration. VELIX is your partner for technical precision and design clarity."
         url="https://velix.tech/services"
       />
-      <div className="pt-32 pb-20">
-        <section className="px-6 md:px-12 mb-20 relative overflow-hidden h-[40vh] md:h-[60vh] flex items-center">
+      <div className="pt-24 md:pt-32 pb-12 md:pb-20">
+        <section className="px-4 md:px-12 mb-12 md:mb-20 relative overflow-hidden h-auto md:h-[60vh] flex items-center min-h-[300px]">
           <div className="max-w-4xl z-10 relative">
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-[10vw] md:text-[7vw] font-display font-black uppercase tracking-tighter leading-none mb-8"
+              className="text-[12vw] md:text-[7vw] font-display font-black uppercase tracking-tighter leading-none mb-6 md:mb-8"
             >
               The Premier <br />
-              Digital <span className="text-zinc-400 italic">Agency.</span>
+              Digital <span className="text-zinc-500 italic">Agency.</span>
             </motion.h1>
-            <p className="max-w-2xl text-xl text-zinc-400 font-light leading-relaxed">
-              VELIX is the leading <span className="text-white font-medium">website creation agency in Bhubaneswar, Odisha</span>. We provide end-to-end digital solutions and <span className="text-zinc-200 font-medium">software development</span> designed to help businesses scale with precision.
+            <p className="max-w-2xl text-base md:text-xl text-zinc-400 font-light leading-relaxed">
+              VELIX is the leading digital agency in Bhubaneswar. We provide end-to-end software development designed to help businesses scale.
             </p>
           </div>
-          {/* Decorative background element */}
-          <div className="services-hero-image absolute top-0 -right-20 w-[60vw] h-[60vw] bg-white opacity-[0.02] rounded-full blur-[100px] pointer-events-none" />
         </section>
 
         {/* Existing Grid Section */}
-        <div className="pb-32 px-6 md:px-12">
+        <div className="pb-20 md:pb-32 px-4 md:px-12">
           <Services />
         </div>
 
         {/* Deep Dive Section */}
-        <section className="py-40 px-6 md:px-12 bg-[#0a0a0a] text-white">
-          <div className="max-w-7xl mx-auto flex flex-col gap-32">
+        <section className="py-20 md:py-40 px-4 md:px-12 bg-[#0a0a0a] text-white">
+          <div className="max-w-7xl mx-auto flex flex-col gap-20 md:gap-32">
             {serviceCategories.map((cat, idx) => (
-              <div key={idx} className="service-long-item grid lg:grid-cols-2 gap-20 items-start border-b border-white/10 pb-32">
+              <div key={idx} className="service-long-item grid lg:grid-cols-2 gap-10 md:gap-20 items-start border-b border-white/10 pb-20 md:pb-32">
                 <div>
-                   <span className="text-xs font-mono uppercase tracking-widest mb-4 block opacity-50">Expertise / 0{idx + 1}</span>
-                   <h2 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tighter mb-8">{cat.title}</h2>
-                   <p className="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed">{cat.desc}</p>
+                   <span className="text-[10px] font-mono uppercase tracking-widest mb-4 block opacity-50">Expertise / 0{idx + 1}</span>
+                   <h2 className="text-3xl md:text-6xl font-display font-black uppercase tracking-tighter mb-6 md:mb-8">{cat.title}</h2>
+                   <p className="text-lg md:text-2xl text-zinc-400 font-light leading-relaxed">{cat.desc}</p>
                 </div>
-                <div className="features-container space-y-8 lg:pt-12">
-                   <p className="text-xs font-mono uppercase tracking-[0.3em] font-bold text-zinc-400">Key Focus Areas</p>
-                   <div className="flex flex-wrap gap-4">
+                <div className="features-container space-y-6 md:space-y-8 lg:pt-12">
+                   <p className="text-[10px] font-mono uppercase tracking-[0.3em] font-bold text-zinc-500">Key Focus Areas</p>
+                   <div className="flex flex-wrap gap-3 md:gap-4">
                       {cat.features.map((f, i) => (
-                         <div key={i} className="feature-pill border border-white/20 px-6 py-2 rounded-full text-sm font-medium uppercase tracking-widest italic group hover:bg-white hover:text-black transition-all cursor-default">
+                         <div key={i} className="feature-pill border border-white/10 px-5 py-2 rounded-full text-[10px] md:text-xs font-medium uppercase tracking-widest italic group hover:bg-white hover:text-black transition-all cursor-default">
                             {f}
                          </div>
                       ))}
@@ -124,12 +122,12 @@ const ServicesPage = () => {
         </section>
 
         {/* Final CTA */}
-        <section className="py-40 text-center px-6">
-           <h2 className="text-[12vw] md:text-[8vw] font-display font-black uppercase tracking-tighter leading-none mb-12">
-              Ready to <br /><span className="text-zinc-400">Upgrade?</span>
+        <section className="py-24 md:py-40 text-center px-6">
+           <h2 className="text-[14vw] md:text-[8vw] font-display font-black uppercase tracking-tighter leading-none mb-10 md:mb-16">
+              Ready to <br /><span className="text-zinc-500">Upgrade?</span>
            </h2>
            <Link to="/contact">
-             <button className="btn-velix mx-auto btn-velix-lg">
+             <button className="btn-velix mx-auto btn-velix-lg px-12 md:px-20 scale-90 md:scale-100">
                 <span>Start Project</span>
              </button>
            </Link>

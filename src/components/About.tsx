@@ -23,11 +23,13 @@ export const About = () => {
           clipPath: 'inset(0% 0% 0% 0%)',
           duration: 1.2,
           ease: "power4.out",
+          force3D: true,
           scrollTrigger: {
             trigger: para,
-            start: "top 85%",
-            end: "top 20%",
-            scrub: 1
+            start: "top 90%",
+            end: "top 70%",
+            scrub: 1,
+            toggleActions: "play none none reverse"
           }
         }
       );
@@ -51,40 +53,24 @@ export const About = () => {
   }, { scope: container });
 
   return (
-    <section id="about" ref={container} className="py-32 px-6 md:px-12 bg-[#050505] relative overflow-hidden">
-      {/* Subtle Background Accent */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] bg-white/[0.02] rounded-full blur-[120px] pointer-events-none" />
-      
-      <div className="max-w-5xl mx-auto relative z-10">
-        <div className="flex flex-col gap-12 md:gap-20">
-          <div className="flex flex-col gap-4">
-            <h2 className="text-sm font-mono uppercase tracking-[0.3em] text-zinc-500 about-para">About Us</h2>
-            <div className="relative inline-block w-fit">
-              <h3 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tighter leading-none about-para">
-                Velix Tech
-              </h3>
-              <div className="about-highlight absolute -bottom-2 left-0 w-full h-[2px] bg-white origin-left" />
-            </div>
+    <section id="about" ref={container} className="py-40 px-6 md:px-12 bg-white relative overflow-hidden">
+      <div className="max-w-4xl mx-auto relative z-10">
+        <div className="flex flex-col items-center text-center gap-16">
+          <div className="flex flex-col gap-6 items-center">
+            <h2 className="text-sm font-mono uppercase tracking-[0.3em] text-zinc-400 about-para">The Agency</h2>
+            <h3 className="text-5xl md:text-7xl font-display font-medium uppercase tracking-tighter leading-none about-para text-black">
+              VELIX TECH
+            </h3>
+            <div className="w-24 h-px bg-black opacity-20 about-para" />
           </div>
 
-          <div ref={textRef} className="grid md:grid-cols-2 gap-12 md:gap-24 items-start">
-            <div className="flex flex-col gap-8">
-              <p className="about-para text-xl md:text-2xl text-white font-light leading-relaxed">
-                Velix Tech is the leading <span className="text-white font-medium">website creation agency in Bhubaneswar, Odisha</span>, specialized in building modern digital solutions that help businesses establish a powerful online presence.
-              </p>
-              <p className="about-para text-lg text-zinc-400 font-light leading-relaxed">
-                As a premier <span className="text-zinc-200 font-medium">software developer agency</span>, we create high-performance websites, strategic branding, and scalable applications designed for growth in Odisha and global markets.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-8">
-              <p className="about-para text-lg text-zinc-400 font-light leading-relaxed">
-                Every project is built with attention to speed, responsive design, clean architecture, and long-term usability so businesses can compete effectively in today’s digital environment. With a strong focus on practical execution, we believe a website should do more than look good — it should communicate trust, support growth, and generate measurable value.
-              </p>
-              <p className="about-para text-lg text-zinc-400 font-light leading-relaxed">
-                Our approach combines design clarity, technical precision, and SEO-ready development to help brands reach wider audiences across Odisha and beyond. As an emerging technology startup in Bhubaneswar, we are committed to delivering reliable digital solutions tailored to modern business needs.
-              </p>
-            </div>
+          <div className="flex flex-col gap-12 max-w-3xl">
+            <p className="about-para text-2xl md:text-3xl text-black font-light leading-snug">
+              A premier <span className="text-zinc-400 font-medium">software developer agency</span> in Bhubaneswar, specialized in building modern digital solutions for the global market.
+            </p>
+            <p className="about-para text-lg text-zinc-500 font-light leading-relaxed">
+              We create high-performance websites and scalable applications designed for growth. Our approach combines design clarity, technical precision, and strategic development to help brands reach wider audiences and achieve measurable value.
+            </p>
           </div>
         </div>
       </div>

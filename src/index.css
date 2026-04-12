@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", sans-serif;
   
   --color-glass: rgba(255, 255, 255, 0.05);
   --color-glass-border: rgba(255, 255, 255, 0.1);
@@ -11,7 +12,7 @@
 
 @layer base {
   body {
-    @apply bg-black text-white selection:bg-white selection:text-black overflow-x-hidden;
+    @apply bg-white text-black selection:bg-black selection:text-white overflow-x-hidden;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
   }
 
@@ -29,7 +30,7 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-glass border border-glass-border backdrop-blur-xl;
+    @apply bg-glass border border-glass-border backdrop-blur-md;
   }
   
   .text-stretch {
@@ -41,6 +42,11 @@
   .heading-xl {
     @apply font-display font-black uppercase tracking-tighter leading-[0.8];
     font-size: clamp(2.5rem, 12vw, 10rem);
+    will-change: transform, opacity;
+  }
+  
+  .about-para, .service-card-wrapper {
+    will-change: transform, opacity;
   }
 }
 
@@ -63,7 +69,7 @@ html.lenis, html.lenis body {
 
 @layer components {
   .btn-velix {
-    @apply relative overflow-hidden h-12 px-8 rounded-full font-bold uppercase tracking-widest text-xs transition-all duration-500 ease-expo border border-white/20 outline-none flex items-center justify-center bg-zinc-900/50 text-white;
+    @apply relative overflow-hidden h-12 px-8 rounded-full font-bold uppercase tracking-widest text-xs transition-all duration-500 ease-expo border border-black/10 outline-none flex items-center justify-center bg-black text-white;
     isolation: isolate;
   }
 
@@ -80,7 +86,7 @@ html.lenis, html.lenis body {
   }
 
   .btn-velix:hover {
-    @apply text-black border-white;
+    @apply text-black border-black/10;
   }
 
   /* Large versions used in Work/Services pages */
@@ -88,9 +94,32 @@ html.lenis, html.lenis body {
     @apply h-20 px-16 text-lg;
   }
 
+  .btn-glass {
+    @apply bg-black/5 backdrop-blur-md border border-black/10 hover:bg-black hover:text-white transition-all duration-500;
+  }
 
+  .text-stroke-1 {
+    -webkit-text-stroke: 1px black;
+  }
 }
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+}
+
+.ease-expo {
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
 }

@@ -19,11 +19,11 @@ import WorkPage from "./pages/WorkPage";
 import ServicesPage from "./pages/ServicesPage";
 import ContactPage from "./pages/ContactPage";
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
 const Layout = () => {
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black">
+    <div className="min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white">
       <Navbar />
       <SmoothScroll />
       <main>
