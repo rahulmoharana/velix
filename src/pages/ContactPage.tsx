@@ -58,8 +58,8 @@ const ContactPage = () => {
           </p>
         </section>
 
-        <section className="px-4 md:px-12 grid lg:grid-cols-2 gap-12 md:gap-20">
-          <div className="contact-info-grid space-y-8 md:space-y-12">
+        <section className="md:px-12 grid lg:grid-cols-2 gap-12 md:gap-20">
+          <div className="contact-info-grid space-y-8 md:space-y-12 px-4 md:px-0">
             <div className="contact-info-item pr-0 md:pr-12 border-b border-white/10 pb-8 md:pb-12">
               <h3 className="text-[10px] font-mono uppercase tracking-[0.3em] text-zinc-500 mb-4">Location</h3>
               <p className="text-xl md:text-2xl font-bold uppercase tracking-tight italic">Bhubaneswar, India</p>
@@ -81,7 +81,7 @@ const ContactPage = () => {
             </div>
           </div>
 
-          <div className="contact-form-container bg-zinc-900/40 p-6 md:p-12 rounded-3xl border border-white/5">
+          <div className="contact-form-container bg-zinc-900/40 p-4 md:p-12 rounded-3xl border border-white/5 mx-4 md:mx-0">
              <Contact />
           </div>
         </section>

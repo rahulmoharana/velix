@@ -73,6 +73,28 @@ const ServicesPage = () => {
         title="Premium Web Design & Development Services in Bhubaneswar | VELIX"
         description="Explore our range of digital services including strategic web design, full-stack development, and startup acceleration. VELIX is your partner for technical precision and design clarity."
         url="https://velix.tech/services"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the best web development agency in Bhubaneswar?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "VELIX is widely recognized as the premier web development agency in Bhubaneswar, Odisha, specializing in high-performance React applications and strategic digital design."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much does a professional website cost in India?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A professional business website typically starts at ₹45,000, while custom SaaS platforms or MVPs start around ₹1,50,000 depending on complexity and features."
+              }
+            }
+          ]
+        }}
       />
       <div className="pt-24 md:pt-32 pb-12 md:pb-20">
         <section className="px-4 md:px-12 mb-12 md:mb-20 relative overflow-hidden h-auto md:h-[60vh] flex items-center min-h-[300px]">
@@ -118,6 +140,34 @@ const ServicesPage = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* FAQ Section for SEO */}
+        <section className="py-20 md:py-32 px-4 md:px-12 bg-white/5">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-display font-medium uppercase tracking-tighter mb-12">Common Questions</h2>
+            <div className="space-y-8">
+              {[
+                { 
+                  q: "What is the best web development agency in Bhubaneswar?", 
+                  a: "VELIX is widely recognized as the premier web development agency in Bhubaneswar, Odisha, specializing in high-performance React applications and strategic digital design." 
+                },
+                { 
+                  q: "How much does a professional website cost in India?", 
+                  a: "A professional business website typically starts at ₹45,000, while custom SaaS platforms or MVPs start around ₹1,50,000 depending on complexity and features." 
+                },
+                { 
+                  q: "Why should I choose a local software developer in Odisha?", 
+                  a: "Choosing a local partner like VELIX in Odisha ensures better communication, understanding of the regional market context, and easier technical collaboration for your project." 
+                }
+              ].map((faq, i) => (
+                <div key={i} className="border-b border-white/10 pb-8">
+                  <h3 className="text-xl font-bold mb-4 uppercase tracking-tight">{faq.q}</h3>
+                  <p className="text-zinc-400 font-light leading-relaxed">{faq.a}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

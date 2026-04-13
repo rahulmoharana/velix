@@ -14,20 +14,22 @@ import { Footer } from "./components/Footer";
 import { SmoothScroll } from "./components/SmoothScroll";
 import { SEO } from "./components/SEO";
 import { FloatingWhatsApp } from "./components/FloatingWhatsApp";
-import AboutPage from "./pages/AboutPage";
-import WorkPage from "./pages/WorkPage";
-import ServicesPage from "./pages/ServicesPage";
-import ContactPage from "./pages/ContactPage";
+const AboutPage = React.lazy(() => import("./pages/AboutPage"));
+const WorkPage = React.lazy(() => import("./pages/WorkPage"));
+const ServicesPage = React.lazy(() => import("./pages/ServicesPage"));
+const ContactPage = React.lazy(() => import("./pages/ContactPage"));
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Layout = () => {
   return (
-    <div className="min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white">
+    <div className="min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white overflow-x-hidden">
       <Navbar />
       <SmoothScroll />
       <main>
-        <Outlet />
+        <React.Suspense fallback={<div className="min-h-screen bg-white" />}>
+          <Outlet />
+        </React.Suspense>
       </main>
       <Footer />
       <FloatingWhatsApp />

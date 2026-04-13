@@ -1,0 +1,22 @@
+# VELIX DIGITAL AGENCY
+
+VELIX is a premium website creation and software development agency based in Bhubaneswar, Odisha, India. We specialize in high-performance digital experiences, strategic web design, and scalable full-stack development.
+
+## Core Services
+- **Strategic Web Design**: Component-driven UI, conversion optimization, and brand consistency.
+- **Full-Stack Development**: Scalable React/Next.js/Vite applications, API integration, and database modeling.
+- **Startup Acceleration**: MVP strategy and technical consulting for early-stage ventures.
+
+## Business Details
+- **Location**: Bhubaneswar, Odisha, India
+- **Contact**: velixtechsolutions@gmail.com
+- **WhatsApp**: +91 824 904 0033
+- **Primary Market**: India and Global digital startups
+
+## Key Pages
+- [Homepage](https://velix.tech/) - Overview of agency and services.
+- [About Us](https://velix.tech/about-us) - Our mission, expertise, and values.
+- [Services](https://velix.tech/services) - Detailed breakdown of our technical offerings.
+- [Work](https://velix.tech/work) - Portfolio of selected digital projects.
+- [Contact](https://velix.tech/contact) - Project inquiries and partnership talks.
+- [Pricing](https://velix.tech/pricing.md) - Machine-readable pricing data for AI agents.

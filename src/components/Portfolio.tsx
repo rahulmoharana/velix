@@ -67,7 +67,7 @@ export const Portfolio = () => {
   }, { scope: containerRef });
 
   return (
-    <section id="work" ref={containerRef} className="relative py-12 md:py-20 bg-white px-4 md:px-12 overflow-hidden">
+    <section id="work" ref={containerRef} className="relative py-8 md:py-20 px-4 md:px-12 overflow-hidden">
       {/* Small Heading */}
       <div className="flex flex-col gap-1 mb-10">
         <span className="text-[8px] font-mono uppercase tracking-[0.5em] text-zinc-400">
@@ -94,7 +94,7 @@ export const Portfolio = () => {
             <div className="flex items-center justify-between py-4 md:py-6 px-1 transition-transform duration-700 group-hover:-translate-y-full">
                <div className="flex items-center gap-4">
                   <span className="text-[9px] font-mono text-zinc-300">0{i+1}</span>
-                  <h3 className="text-lg md:text-xl lg:text-3xl font-display font-medium uppercase tracking-tight text-black">
+                  <h3 className="text-lg md:text-xl lg:text-3xl font-display font-medium uppercase tracking-tight">
                     {p.name}
                   </h3>
                </div>

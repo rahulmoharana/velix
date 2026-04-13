@@ -15,27 +15,27 @@ import { cn } from '../lib/utils';
 const ServiceCard = ({ icon: Icon, title, description, index, className }: any) => {
   return (
     <div className={cn(
-      "service-card relative w-full md:w-[280px] h-[360px] bg-white border border-zinc-100 p-8 flex flex-col justify-between group overflow-hidden transition-all duration-1000 ease-expo hover:border-black shadow-xl",
+      "service-card relative w-full md:w-[280px] h-[360px] bg-current/5 backdrop-blur-sm border border-current/10 p-8 flex flex-col justify-between group overflow-hidden transition-all duration-1000 ease-expo hover:border-current shadow-xl",
       className
     )}>
       {/* Decorative hover bg */}
-      <div className="absolute inset-x-0 bottom-0 h-0 bg-neutral-900 group-hover:h-full transition-all duration-700 -z-0" />
+      <div className="absolute inset-x-0 bottom-0 h-0 bg-current group-hover:h-full transition-all duration-700 -z-0" />
       
       <div className="relative z-10">
         <div className="flex justify-between items-start mb-8">
-          <div className="w-12 h-12 bg-black text-white flex items-center justify-center group-hover:bg-white group-hover:rotate-[360deg] transition-all duration-1000 rounded-xl">
+          <div className="w-12 h-12 bg-black text-white flex items-center justify-center group-hover:bg-white group-hover:text-black group-hover:rotate-[360deg] transition-all duration-1000 rounded-xl">
             <Icon className="w-6 h-6 stroke-[1.5]" />
           </div>
-          <span className="text-[10px] font-mono text-zinc-300 font-black tracking-widest group-hover:text-white/20 transition-colors">
+          <span className="text-[10px] font-mono opacity-30 font-black tracking-widest group-hover:text-white/20 transition-colors">
             0{index + 1}
           </span>
         </div>
         
         <div className="space-y-4">
-          <h3 className="text-xl font-display font-bold uppercase tracking-tight text-black group-hover:text-white transition-colors duration-500">
+          <h3 className="text-xl font-display font-bold uppercase tracking-tight group-hover:invert transition-all duration-500">
             {title}
           </h3>
-          <p className="text-[12px] text-zinc-500 font-normal uppercase tracking-wide leading-relaxed group-hover:text-zinc-400 transition-colors duration-500 line-clamp-4">
+          <p className="text-[12px] opacity-60 font-normal uppercase tracking-wide leading-relaxed group-hover:invert transition-all duration-500 line-clamp-4">
             {description}
           </p>
         </div>
@@ -56,46 +56,58 @@ export const Services = () => {
   const cardsContainerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-        pin: innerRef.current,
-        anticipatePin: 1,
-      }
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1,
+          pin: innerRef.current,
+          anticipatePin: 1,
+        }
+      });
+
+      // 1. Massive Headline: Scale down and move to CENTER of Navbar
+      tl.fromTo(headlineRef.current, {
+         scale: 1.5,
+         opacity: 1,
+         y: 0
+      }, {
+        scale: 0.2,
+        opacity: 1,
+        y: "-46vh",
+        duration: 2,
+        ease: "power2.inOut"
+      }, 0);
+
+      // 2. Cards appearing sequentially
+      const cards = cardsContainerRef.current?.querySelectorAll('.service-card-wrapper') || [];
+      cards.forEach((card: any, i: number) => {
+        tl.fromTo(card, {
+          y: 800,
+          opacity: 0,
+          scale: 0.8,
+          rotateX: -20
+        }, {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          rotateX: 0,
+          duration: 2,
+          ease: "expo.out"
+        }, 0.5 + i * 0.6);
+      });
     });
 
-    // 1. Massive Headline: Scale down and move to CENTER of Navbar
-    tl.fromTo(headlineRef.current, {
-       scale: 1.5,
-       opacity: 1,
-       y: 0
-    }, {
-      scale: 0.04,
-      opacity: 1,
-      y: "-46vh",
-      duration: 2,
-      ease: "power2.inOut"
-    }, 0);
-
-    // 2. Cards appearing sequentially
-    const cards = cardsContainerRef.current?.querySelectorAll('.service-card-wrapper') || [];
-    cards.forEach((card: any, i: number) => {
-      tl.fromTo(card, {
-        y: 800,
-        opacity: 0,
-        scale: 0.8,
-        rotateX: -20
-      }, {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        rotateX: 0,
-        duration: 2,
-        ease: "expo.out"
-      }, 0.5 + i * 0.6);
+    // Mobile logic: Just pinning the container for the vertical list effect if needed
+    // Or just let it scroll normally. The user wanted to reduce gaps, so let's make it simpler.
+    mm.add("(max-width: 767px)", () => {
+       // On mobile, we don't pin everything for 400vh because it creates huge gaps.
+       // We'll just let the motion.divs handle their entry as they scroll into view.
+       gsap.set(headlineRef.current, { scale: 1, y: 0, opacity: 1 });
     });
 
   }, { scope: container });
@@ -124,15 +136,15 @@ export const Services = () => {
   ];
 
   return (
-    <section id="services" ref={container} className="relative h-[400vh] bg-white overflow-visible">
+    <section id="services" ref={container} className="relative h-auto md:h-[400vh] overflow-visible">
       <div 
         ref={innerRef} 
-        className="sticky top-0 h-screen w-full flex flex-col items-center justify-center bg-white overflow-hidden px-4 md:px-12"
+        className="relative md:sticky md:top-0 h-auto md:h-screen w-full flex flex-col items-center justify-center overflow-hidden px-4 md:px-12 py-16 md:py-0"
       >
         {/* Cinematic Headline */}
         <h2 
           ref={headlineRef}
-          className="absolute text-center text-[25vw] md:text-[20vw] font-display font-black uppercase tracking-tighter text-black select-none leading-none z-0 pointer-events-none origin-center whitespace-nowrap opacity-100"
+          className="relative md:absolute text-center text-4xl md:text-[20vw] font-display font-black uppercase tracking-tighter select-none leading-none z-0 pointer-events-none origin-center md:whitespace-nowrap opacity-100 mb-8 md:mb-0"
         >
           SERVICES
         </h2>
@@ -158,7 +170,7 @@ export const Services = () => {
         </div>
 
         {/* Mobile Content Layer (Editorial List) */}
-        <div className="flex md:hidden relative z-10 w-full flex-col gap-4 overflow-hidden mt-12">
+        <div className="flex md:hidden relative z-10 w-full flex-col gap-4 overflow-hidden mt-6">
           {servicesList.map((s, i) => (
              <motion.div 
                key={i}
@@ -168,7 +180,7 @@ export const Services = () => {
                viewport={{ once: true }}
                transition={{ delay: i * 0.1 }}
              >
-                <div className="flex flex-col py-6 border-t border-zinc-100 last:border-b px-2">
+                <div className="flex flex-col py-4 border-t border-zinc-100 last:border-b px-2">
                   <span className="text-[8px] font-mono text-zinc-300 mb-2">0{i+1}</span>
                   <h3 className="text-2xl font-display font-black uppercase tracking-tighter leading-none mb-3">
                     {s.title}
@@ -188,7 +200,7 @@ export const Services = () => {
           ))}
         </div>
 
-        <div className="absolute bottom-8 flex flex-col items-center gap-2">
+        <div className="hidden md:flex absolute bottom-8 flex flex-col items-center gap-2">
           <div className="w-px h-8 bg-zinc-100" />
           <span className="text-[8px] uppercase font-black tracking-[0.5em] text-zinc-300">
              Scroll to explore

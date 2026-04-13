@@ -11,10 +11,10 @@ export const Hero = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[90vh] md:min-h-screen flex flex-col justify-center px-6 md:px-12 overflow-hidden bg-white pt-20 md:pt-0"
+      className="relative min-h-[60vh] md:min-h-[85vh] flex flex-col justify-center px-6 md:px-12 overflow-hidden bg-white pt-16 md:pt-15"
     >
       {/* Background Decor (Mobile Only) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[45vw] font-black text-zinc-50/50 select-none pointer-events-none z-0 md:hidden">
+      <div className="absolute top-1/2 left-0 w-full -translate-y-1/2 text-[45vw] font-black text-zinc-50/50 select-none pointer-events-none z-0 md:hidden text-center overflow-hidden">
         VELIX
       </div>
 

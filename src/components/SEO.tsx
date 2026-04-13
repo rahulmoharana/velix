@@ -7,6 +7,7 @@ interface SEOProps {
   keywords?: string;
   url?: string;
   image?: string;
+  schema?: object;
 }
 
 export const SEO: React.FC<SEOProps> = ({ 
@@ -14,8 +15,35 @@ export const SEO: React.FC<SEOProps> = ({
   description = "VELIX is the leading website creation and software development agency in Bhubaneswar, Odisha. We build premium digital experiences, high-performance websites, and scalable software solutions.",
   keywords = "website creation agency bhubaneswar, software developer agency odisha, digital marketing bhubaneswar, web development company odisha, IT startup bhubaneswar, velix tech",
   url = "https://velix.tech/",
-  image = "https://velix.tech/og-image.jpg"
+  image = "https://velix.tech/og-image.jpg",
+  schema
 }) => {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "VELIX",
+    "url": "https://velix.tech",
+    "logo": "https://velix.tech/logo.png",
+    "sameAs": [
+      "https://twitter.com/velixtech",
+      "https://linkedin.com/company/velixtech",
+      "https://instagram.com/velixtech"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bhubaneswar",
+      "addressRegion": "Odisha",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-824-904-0033",
+      "contactType": "sales",
+      "email": "velixtechsolutions@gmail.com"
+    }
+  };
+
+  const currentSchema = schema || organizationSchema;
   return (
     <Helmet>
       {/* Standard Metadata */}
@@ -39,6 +67,11 @@ export const SEO: React.FC<SEOProps> = ({
 
       {/* Canonical URL */}
       <link rel="canonical" href={url} />
+
+      {/* Structured Data */}
+      <script type="application/ld+json">
+        {JSON.stringify(currentSchema)}
+      </script>
     </Helmet>
   );
 };

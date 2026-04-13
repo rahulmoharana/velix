@@ -57,20 +57,20 @@ export const Contact = () => {
   }, { scope: container });
 
   return (
-    <section id="contact" ref={container} className="py-12 md:py-24 px-4 md:px-12 relative bg-white overflow-visible">
+    <section id="contact" ref={container} className="py-8 md:py-24 md:px-12 relative overflow-visible">
       <div className="max-w-4xl mx-auto text-center relative z-20">
-        <h2 className="contact-heading text-3xl md:text-5xl lg:text-7xl font-display font-black uppercase tracking-tighter text-black mb-4 leading-none">
+        <h2 className="contact-heading text-3xl md:text-5xl lg:text-7xl font-display font-black uppercase tracking-tighter mb-4 leading-none">
           LET'S BUILD
         </h2>
         
         <p className="contact-text text-base md:text-xl text-zinc-500 font-light mb-12 leading-relaxed max-w-xl mx-auto">
-          Ready to elevate your digital presence? Join forces with <span className="text-black font-medium uppercase tracking-tighter">VELIX</span> and define the future of your industry.
+          Ready to elevate your digital presence? Join forces with <span className="font-medium uppercase tracking-tighter">VELIX</span> and define the future of your industry.
         </p>
         
         <div className="flex flex-col items-center gap-8 md:gap-12">
           <a 
             href="mailto:velixtechsolutions@gmail.com" 
-            className="mail-link block text-black text-lg md:text-4xl font-display font-bold uppercase tracking-tighter border-b-2 border-black pb-2 hover:opacity-100 transition-all duration-500 whitespace-normal break-words"
+            className="mail-link block text-lg md:text-4xl font-display font-bold uppercase tracking-tighter border-b-2 border-current pb-2 hover:opacity-100 transition-all duration-500 whitespace-normal break-words"
           >
             velixtechsolutions@gmail.com
           </a>
