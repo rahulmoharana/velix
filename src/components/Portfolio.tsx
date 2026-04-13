@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '../lib/utils';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'motion/react';
 
 // Import local assets
 import quickAiImg from '../assets/1-QuickAi.png';
@@ -35,7 +35,12 @@ const Marquee = ({ text }: { text: string }) => {
 export const Portfolio = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const smoothX = useSpring(mouseX, { stiffness: 150, damping: 25, mass: 0.5 });
+  const smoothY = useSpring(mouseY, { stiffness: 150, damping: 25, mass: 0.5 });
 
   const projects = [
     { name: "quick AI", link: "https://ai-saas-nine-rosy.vercel.app/", image: quickAiImg },
@@ -46,11 +51,12 @@ export const Portfolio = () => {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
+      mouseX.set(e.clientX - 120);
+      mouseY.set(e.clientY - 90);
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [mouseX, mouseY]);
 
   useGSAP(() => {
     gsap.from('.project-item', {
@@ -114,13 +120,12 @@ export const Portfolio = () => {
       {/* Sticky/Floating Image Preview (Smaller) */}
       <motion.div 
         className="fixed top-0 left-0 pointer-events-none z-50 w-[240px] md:w-[300px] aspect-[4/3] rounded-xl overflow-hidden shadow-2xl border border-white/10"
-        animate={{
-          x: mousePos.x - 120,
-          y: mousePos.y - 90,
+        style={{
+          x: smoothX,
+          y: smoothY,
           scale: hoveredIndex !== null ? 1 : 0,
           rotate: hoveredIndex !== null ? 1 : 0,
         }}
-        transition={{ type: "spring", stiffness: 150, damping: 25, mass: 0.5 }}
       >
         <AnimatePresence mode="wait">
           {hoveredIndex !== null && (

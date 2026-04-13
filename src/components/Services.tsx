@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 
-const ServiceCard = ({ icon: Icon, title, description, index, className }: any) => {
+const ServiceCard = React.memo(({ icon: Icon, title, description, index, className }: any) => {
   return (
     <div className={cn(
       "service-card relative w-full md:w-[280px] h-[360px] bg-current/5 backdrop-blur-sm border border-current/10 p-8 flex flex-col justify-between group overflow-hidden transition-all duration-1000 ease-expo hover:border-current shadow-xl",
@@ -47,7 +47,7 @@ const ServiceCard = ({ icon: Icon, title, description, index, className }: any) 
       </div>
     </div>
   );
-};
+});
 
 export const Services = () => {
   const container = useRef<HTMLDivElement>(null);

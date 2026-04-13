@@ -14,6 +14,8 @@ import { Footer } from "./components/Footer";
 import { SmoothScroll } from "./components/SmoothScroll";
 import { SEO } from "./components/SEO";
 import { FloatingWhatsApp } from "./components/FloatingWhatsApp";
+import { Preloader } from "./components/Preloader";
+import { motion, AnimatePresence } from "motion/react";
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
 const WorkPage = React.lazy(() => import("./pages/WorkPage"));
 const ServicesPage = React.lazy(() => import("./pages/ServicesPage"));
@@ -23,7 +25,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Layout = () => {
   return (
-    <div className="min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white overflow-x-hidden">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.2, ease: "circOut" }}
+      className="min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white overflow-x-hidden"
+    >
       <Navbar />
       <SmoothScroll />
       <main>
@@ -33,7 +40,7 @@ const Layout = () => {
       </main>
       <Footer />
       <FloatingWhatsApp />
-    </div>
+    </motion.div>
   );
 };
 
@@ -51,18 +58,28 @@ const HomePage = () => {
 };
 
 function App() {
+  const [loading, setLoading] = React.useState(true);
+
   return (
-    <Router>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about-us" element={<AboutPage />} />
-          <Route path="/work" element={<WorkPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Route>
-      </Routes>
-    </Router>
+    <>
+      <AnimatePresence mode="wait">
+        {loading && <Preloader onComplete={() => setLoading(false)} />}
+      </AnimatePresence>
+      
+      {!loading && (
+        <Router>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about-us" element={<AboutPage />} />
+              <Route path="/work" element={<WorkPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+            </Route>
+          </Routes>
+        </Router>
+      )}
+    </>
   );
 }
 
