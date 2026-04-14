@@ -42,7 +42,7 @@ const ContactPage = () => {
       <SEO 
         title="Get in Touch | Start Your Digital Transformation with VELIX"
         description="Ready to build something remarkable? Contact VELIX for premium web design, software development, and digital strategy in Bhubaneswar, Odisha."
-        url="https://velix.tech/contact"
+        url="https://www.velixinfo.tech/contact"
       />
       <div className="pt-24 md:pt-32 pb-12 md:pb-20">
         <section className="px-4 md:px-12 mb-12 md:mb-20">

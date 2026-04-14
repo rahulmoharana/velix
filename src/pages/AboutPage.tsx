@@ -56,7 +56,7 @@ const AboutPage = () => {
       <SEO 
         title="About VELIX | Our Mission and Expertise in Digital Innovation"
         description="Learn about VELIX, the leading digital agency in Bhubaneswar. Discover our mission, core values, and our expertise in strategic design and future-proof technology."
-        url="https://velix.tech/about-us"
+        url="https://www.velixinfo.tech/about-us"
       />
       <div className="pt-24 md:pt-32">
         <div className="px-6 md:px-12 mb-12 flex justify-center text-center">

@@ -14,16 +14,16 @@ export const SEO: React.FC<SEOProps> = ({
   title = "VELIX | Best Website Creation & Software Developer Agency in Bhubaneswar, Odisha", 
   description = "VELIX is the leading website creation and software development agency in Bhubaneswar, Odisha. We build premium digital experiences, high-performance websites, and scalable software solutions.",
   keywords = "website creation agency bhubaneswar, software developer agency odisha, digital marketing bhubaneswar, web development company odisha, IT startup bhubaneswar, velix tech",
-  url = "https://velix.tech/",
-  image = "https://velix.tech/og-image.jpg",
+  url = "https://www.velixinfo.tech/",
+  image = "https://www.velixinfo.tech/og-image.jpg",
   schema
 }) => {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "VELIX",
-    "url": "https://velix.tech",
-    "logo": "https://velix.tech/logo.png",
+    "url": "https://www.velixinfo.tech",
+    "logo": "https://www.velixinfo.tech/logo.png",
     "sameAs": [
       "https://twitter.com/velixtech",
       "https://linkedin.com/company/velixtech",

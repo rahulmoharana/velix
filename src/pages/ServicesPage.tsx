@@ -72,7 +72,7 @@ const ServicesPage = () => {
       <SEO 
         title="Premium Web Design & Development Services in Bhubaneswar | VELIX"
         description="Explore our range of digital services including strategic web design, full-stack development, and startup acceleration. VELIX is your partner for technical precision and design clarity."
-        url="https://velix.tech/services"
+        url="https://www.velixinfo.tech/services"
         schema={{
           "@context": "https://schema.org",
           "@type": "FAQPage",

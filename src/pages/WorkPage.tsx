@@ -37,7 +37,7 @@ const WorkPage = () => {
       <SEO 
         title="Portfolio | Featured Digital Experiences and Software Projects by VELIX"
         description="A showcase of our digital craftsmanship. Explore high-performance SaaS platforms, immersive brand experiences, and custom web development by VELIX."
-        url="https://velix.tech/work"
+        url="https://www.velixinfo.tech/work"
       />
       <div className="pt-24 md:pt-32 pb-12 md:pb-20">
         {/* SEO Focused Hero Section */}

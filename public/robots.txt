@@ -17,4 +17,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://velix.tech/sitemap.xml
+Sitemap: https://www.velixinfo.tech/sitemap.xml
