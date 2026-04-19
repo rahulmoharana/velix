@@ -5,79 +5,69 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export const About = () => {
   const container = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 768px)", () => {
-      const paragraphs = gsap.utils.toArray('.about-para');
-      
-      paragraphs.forEach((para: any) => {
-        gsap.fromTo(para, 
-          { 
-            opacity: 0, 
-            y: 40,
-            clipPath: 'inset(100% 0% 0% 0%)' 
-          },
-          {
-            opacity: 1,
-            y: 0,
-            clipPath: 'inset(0% 0% 0% 0%)',
-            duration: 1.2,
-            ease: "power4.out",
-            force3D: true,
-            scrollTrigger: {
-              trigger: para,
-              start: "top 90%",
-              end: "top 70%",
-              scrub: 1,
-              toggleActions: "play none none reverse"
-            }
+      // Animate images
+      gsap.fromTo('.about-image',
+        {
+          y: 60,
+          opacity: 0,
+          clipPath: 'inset(10% 0 0 0)'
+        },
+        {
+          y: 0,
+          opacity: 1,
+          clipPath: 'inset(0% 0 0 0)',
+          duration: 1.2,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top 75%",
+            end: "top 30%",
+            scrub: false,
           }
-        );
-      });
-    });
-
-    // Mobile specific: Animate ONLY the description paragraphs, not the title
-    mm.add("(max-width: 767px)", () => {
-      // Find elements with about-para that are NOT h2 or h3
-      const descParagraphs = gsap.utils.toArray('.about-para').filter((el: any) => 
-        el.tagName !== 'H2' && el.tagName !== 'H3' && !el.classList.contains('w-24')
+        }
       );
 
-      descParagraphs.forEach((para: any) => {
-        gsap.fromTo(para, 
-          { 
-            opacity: 0, 
-            y: 20,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            scrollTrigger: {
-              trigger: para,
-              start: "top 95%",
-            }
+      // Animate texts
+      gsap.fromTo('.about-text',
+        {
+          y: 30,
+          opacity: 0
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top 75%"
           }
-        );
-      });
+        }
+      );
     });
 
-    // Animate the highlight background (keep on both or desktop only? I'll keep it as is but scoped to mm if needed)
-    mm.add("(min-width: 768px)", () => {
-      gsap.fromTo('.about-highlight',
-        { scaleX: 0 },
+    // Mobile specific animations
+    mm.add("(max-width: 767px)", () => {
+      gsap.fromTo(['.about-text', '.about-image'],
         {
-          scaleX: 1,
-          duration: 1.5,
-          ease: "expo.inOut",
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.1,
           scrollTrigger: {
-            trigger: '.about-highlight',
+            trigger: container.current,
             start: "top 90%",
-            end: "top 70%",
-            scrub: 1
           }
         }
       );
@@ -85,26 +75,55 @@ export const About = () => {
   }, { scope: container });
 
   return (
-    <section id="about" ref={container} className="pt-8 pb-16 md:pt-20 md:pb-40 px-6 md:px-12 relative overflow-hidden">
-      <div className="max-w-4xl mx-auto relative z-10">
-        <div className="flex flex-col items-center text-center gap-16">
-          <div className="flex flex-col gap-6 items-center">
-            <h2 className="text-sm font-mono uppercase tracking-[0.3em] text-zinc-400 about-para">The Agency</h2>
-            <h3 className="text-4xl md:text-7xl font-display font-medium uppercase tracking-tighter leading-none about-para">
-              VELIX TECH
-            </h3>
-            <div className="w-24 h-px bg-current opacity-20 about-para" />
-          </div>
+    <section id="about" ref={container} className="pt-20 pb-20 md:pt-32 md:pb-32 px-6 md:px-12 relative bg-white">
+      <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-8">
 
-          <div className="flex flex-col gap-12 max-w-3xl">
-            <p className="about-para text-2xl md:text-3xl font-light leading-snug">
-              A premier <span className="text-zinc-400 font-medium">software developer agency</span> in Bhubaneswar, specialized in building modern digital solutions for the global market.
-            </p>
-            <p className="about-para text-lg text-zinc-500 font-light leading-relaxed">
-              We create high-performance websites and scalable applications designed for growth. Our approach combines design clarity, technical precision, and strategic development to help brands reach wider audiences and achieve measurable value.
+        {/* Left Column */}
+        <div className="w-full lg:w-[40%] flex flex-col">
+          <h2 className="flex flex-col text-black font-display font-black uppercase tracking-tighter leading-[0.85] text-[6rem] sm:text-[8rem] lg:text-[10rem]">
+            <span className="about-text">ABOUT</span>
+            <span className="about-text">US</span>
+          </h2>
+
+          <div className="mt-10 lg:mt-32 max-w-sm">
+            <h4 className="about-text font-bold text-zinc-900 mb-4 text-base md:text-lg">Modern Software and Web Engineering</h4>
+            <p className="about-text text-zinc-600 text-sm leading-relaxed font-medium">
+              Digital Excellence: Solutions featuring clean architecture, scalable performance, and premium user experiences.
             </p>
           </div>
         </div>
+
+        {/* Center Column / Main Image */}
+        <div className="w-full lg:w-[35%]">
+          <div className="h-[450px] md:h-[600px] lg:h-[700px] w-full about-image mt-4 lg:mt-16">
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+              alt="Office"
+              className="w-full h-full object-cover rounded-[2rem] md:rounded-[2.5rem]"
+            />
+          </div>
+        </div>
+
+        {/* Right Column / Side Content */}
+        <div className="w-full lg:w-[25%] flex flex-col lg:justify-end pb-4 lg:pb-16 mt-4 lg:mt-0">
+          <div className="h-[250px] md:h-[300px] w-full about-image mb-8 lg:mb-12">
+            <img
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+              alt="Team collaboration"
+              className="w-full h-full object-cover rounded-[1.5rem] md:rounded-[2rem]"
+            />
+          </div>
+
+          <div>
+            <h3 className="about-text font-display font-bold text-3xl lg:text-4xl tracking-tight mb-4 text-black">
+              Our Philosophy
+            </h3>
+            <p className="about-text text-zinc-600 text-sm leading-relaxed font-medium">
+              At Velix Tech, we believe in creating robust, personalized digital environments that reflect our clients' visions and accelerate their growth.
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
   );

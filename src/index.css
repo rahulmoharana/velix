@@ -81,24 +81,22 @@ html.lenis, html.lenis body {
 
 @layer components {
   .btn-velix {
-    @apply relative overflow-hidden h-12 px-8 rounded-full font-bold uppercase tracking-widest text-xs transition-all duration-500 ease-expo border border-black/10 outline-none flex items-center justify-center bg-black text-white;
-    isolation: isolate;
+    @apply relative overflow-hidden h-12 px-8 rounded-full font-bold uppercase tracking-widest text-xs transition-colors duration-300 ease-out border border-zinc-900 outline-none flex items-center justify-center bg-zinc-900 text-white z-0 shadow-lg shadow-zinc-900/20;
   }
 
   .btn-velix::before {
     content: '';
-    @apply absolute top-1/2 left-1/2 w-[120%] aspect-square bg-white rounded-full;
-    transform: translate(-50%, 50%);
-    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    @apply absolute inset-0 w-full h-full bg-white transition-transform duration-300 ease-out;
+    transform: translateY(100%);
     z-index: -1;
   }
 
   .btn-velix:hover::before {
-    transform: translate(-50%, -50%);
+    transform: translateY(0);
   }
 
   .btn-velix:hover {
-    @apply text-black border-black/10;
+    @apply text-zinc-900;
   }
 
   /* Large versions used in Work/Services pages */
@@ -107,7 +105,22 @@ html.lenis, html.lenis body {
   }
 
   .btn-glass {
-    @apply bg-black/5 backdrop-blur-md border border-black/10 hover:bg-black hover:text-white transition-all duration-500;
+    @apply relative overflow-hidden h-12 px-8 rounded-full font-bold uppercase tracking-widest text-xs transition-colors duration-300 ease-out border border-zinc-200 bg-white text-zinc-900 z-0 flex items-center justify-center shadow-sm hover:border-zinc-900;
+  }
+
+  .btn-glass::before {
+    content: '';
+    @apply absolute inset-0 w-full h-full bg-zinc-900 transition-transform duration-300 ease-out;
+    transform: translateY(100%);
+    z-index: -1;
+  }
+
+  .btn-glass:hover::before {
+    transform: translateY(0);
+  }
+
+  .btn-glass:hover {
+    @apply text-white;
   }
 
   .text-stroke-1 {

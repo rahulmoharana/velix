@@ -15,6 +15,7 @@ import { SmoothScroll } from "./components/SmoothScroll";
 import { SEO } from "./components/SEO";
 import { FloatingWhatsApp } from "./components/FloatingWhatsApp";
 import { Preloader } from "./components/Preloader";
+import { TechStack } from "./components/TechStack";
 import { motion, AnimatePresence } from "motion/react";
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
 const WorkPage = React.lazy(() => import("./pages/WorkPage"));
@@ -49,6 +50,7 @@ const HomePage = () => {
     <>
       <SEO />
       <Hero />
+      <TechStack />
       <About />
       <Services />
       <Portfolio />

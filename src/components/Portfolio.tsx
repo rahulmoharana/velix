@@ -73,45 +73,60 @@ export const Portfolio = () => {
   }, { scope: containerRef });
 
   return (
-    <section id="work" ref={containerRef} className="relative py-8 md:py-20 px-4 md:px-12 overflow-hidden">
+    <section id="work" ref={containerRef} className="relative py-8 md:py-20 overflow-hidden">
       {/* Small Heading */}
-      <div className="flex flex-col gap-1 mb-10">
-        <span className="text-[8px] font-mono uppercase tracking-[0.5em] text-zinc-400">
+      <div className="flex flex-col gap-2 mb-12 px-6 md:px-12">
+        <span className="text-[10px] font-mono uppercase tracking-[0.5em] text-zinc-400">
            Gallery / Selected
         </span>
-        <h2 className="text-lg md:text-xl font-display font-bold uppercase tracking-tighter text-black">
+        <h2 className="text-5xl md:text-7xl lg:text-[6rem] font-display font-black uppercase tracking-tighter text-black leading-none">
            Our Work
         </h2>
       </div>
 
       {/* Projects List */}
-      <div className="relative z-10">
+      <div className="relative z-10 w-full border-t border-zinc-100">
         {projects.map((p, i) => (
           <a 
             key={i}
             href={p.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="project-item group relative block border-b border-zinc-50 overflow-hidden"
+            className="project-item group relative block border-b border-zinc-100 overflow-hidden"
             onMouseEnter={() => setHoveredIndex(i)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
             {/* Top Layer (Default state) */}
-            <div className="flex items-center justify-between py-4 md:py-6 px-1 transition-transform duration-700 group-hover:-translate-y-full">
-               <div className="flex items-center gap-4">
-                  <span className="text-[9px] font-mono text-zinc-300">0{i+1}</span>
-                  <h3 className="text-lg md:text-xl lg:text-3xl font-display font-medium uppercase tracking-tight">
+            <div className="flex items-center justify-between py-6 md:py-10 px-6 md:px-12 transition-transform duration-700 group-hover:-translate-y-full">
+               <div className="flex items-center gap-6 md:gap-10 w-full">
+                  <span className="text-[10px] md:text-xs font-mono text-zinc-300">0{i+1}</span>
+                  <h3 className="text-3xl sm:text-5xl md:text-[4rem] lg:text-[5rem] font-display font-bold uppercase tracking-tight leading-none shrink-0 group-hover:text-black transition-colors duration-500">
                     {p.name}
                   </h3>
                </div>
-               <span className="text-[8px] font-mono uppercase tracking-widest text-zinc-400 opacity-0 group-hover:opacity-100 transition-opacity">
+               <span className="hidden md:block text-[10px] font-mono uppercase tracking-widest text-zinc-400 opacity-0 group-hover:opacity-100 transition-opacity">
                   Full View ↗
                </span>
             </div>
 
             {/* Bottom Overlay (Hover state) */}
             <div className="absolute inset-x-0 bottom-0 h-full translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[0.76, 0, 0.24, 1]">
-               <Marquee text={p.name} />
+               <div className="flex overflow-hidden whitespace-nowrap bg-zinc-950 h-full items-center">
+                 <div className="flex animate-marquee py-2">
+                   {[...Array(15)].map((_, idx) => (
+                     <span key={idx} className="text-white text-2xl sm:text-4xl md:text-[3rem] lg:text-[4rem] font-display font-bold uppercase tracking-tighter mx-4 leading-none">
+                       {p.name} —
+                     </span>
+                   ))}
+                 </div>
+                 <div className="flex animate-marquee py-2" aria-hidden="true">
+                   {[...Array(15)].map((_, idx) => (
+                     <span key={idx} className="text-white text-2xl sm:text-4xl md:text-[3rem] lg:text-[4rem] font-display font-bold uppercase tracking-tighter mx-4 leading-none">
+                       {p.name} —
+                     </span>
+                   ))}
+                 </div>
+               </div>
             </div>
           </a>
         ))}

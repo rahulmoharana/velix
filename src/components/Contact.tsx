@@ -57,7 +57,7 @@ export const Contact = () => {
   }, { scope: container });
 
   return (
-    <section id="contact" ref={container} className="py-8 md:py-24 md:px-12 relative overflow-visible">
+    <section id="contact" ref={container} className="py-8 md:py-24 px-6 md:px-12 relative overflow-visible">
       <div className="max-w-4xl mx-auto text-center relative z-20">
         <h2 className="contact-heading text-3xl md:text-5xl lg:text-7xl font-display font-black uppercase tracking-tighter mb-4 leading-none">
           LET'S BUILD
