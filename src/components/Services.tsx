@@ -9,6 +9,7 @@ import {
   GraduationCap
 } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { Link, useLocation } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,52 +24,59 @@ const servicesList = [
   {
     svgPath: SVG_PATHS[0],
     title: "UI/UX Experience",
-    description: "Bespoke, high-end visual identities and website layouts crafted meticulously from scratch. We architect journeys that transform casual visitors into devoted customers."
+    description: "Bespoke, high-end visual identities and website layouts crafted meticulously from scratch. We architect journeys that transform casual visitors into devoted customers.",
+    link: "/services/ui-ux"
   },
   {
     svgPath: SVG_PATHS[1],
     title: "Web Platforms",
-    description: "Lightning-fast, immersive landing pages and full-scale enterprise CMS solutions. Built on modern stacks capable of handling massive scale."
+    description: "Lightning-fast, immersive landing pages and full-scale enterprise CMS solutions. Built on modern stacks capable of handling massive scale.",
+    link: "/services/web-platforms"
   },
   {
     svgPath: SVG_PATHS[2],
     title: "SaaS Infrastructure",
-    description: "Robust end-to-end software development. We build the architecture, APIs, and front-end tools that power next-generation startups."
+    description: "Robust end-to-end software development. We build the architecture, APIs, and front-end tools that power next-generation startups.",
+    link: "/services/saas"
   },
   {
     svgPath: SVG_PATHS[3],
     title: "Technical Consulting",
-    description: "Expert mentorship and architectural guidance for complex student projects and startup MVPs, ensuring technical depth and success."
+    description: "Expert mentorship and architectural guidance for complex student projects and startup MVPs, ensuring technical depth and success.",
+    link: "/services/technical-consulting"
   }
 ];
 
 const ServiceCard = React.memo(({ svgPath, title, index, className }: any) => {
+  const isHome = useLocation().pathname === '/';
+  
   return (
     <div className={cn(
-      "w-full max-w-[340px] aspect-[4/5] bg-zinc-50 border border-zinc-200 p-8 flex flex-col justify-between overflow-hidden shadow-2xl relative",
+      "w-full max-w-[340px] aspect-[4/5] p-8 flex flex-col justify-between overflow-hidden shadow-2xl relative transition-colors duration-500",
+      isHome ? "bg-zinc-50 border border-zinc-200" : "bg-zinc-900 border border-white/10 text-white",
       className
     )}>
       <div className="relative z-10 w-full flex justify-end items-start mb-8">
-        <span className="text-sm font-mono opacity-60 font-black tracking-widest text-black/40">
+        <span className={cn("text-sm font-mono opacity-60 font-black tracking-widest", isHome ? "text-black/40" : "text-white/40")}>
           0{index + 1}
         </span>
       </div>
       
       {/* Massive Centered SVG */}
       <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
-        <svg viewBox="0 0 256 256" className="w-32 h-32 md:w-48 md:h-48 text-zinc-900 group-hover:scale-110 transition-transform duration-700" fill="none">
+        <svg viewBox="0 0 256 256" className={cn("w-32 h-32 md:w-48 md:h-48 group-hover:scale-110 transition-transform duration-700", isHome ? "text-zinc-900" : "text-zinc-700")} fill="none">
            <path d={svgPath} fill="currentColor"/>
         </svg>
       </div>
 
       <div className="relative z-10 w-full flex flex-col items-center pb-2">
-        <h3 className="text-2xl lg:text-3xl font-display font-black uppercase tracking-tighter leading-[1.1] text-center bg-white/60 backdrop-blur-md px-4 py-2 rounded-xl">
+        <h3 className={cn("text-2xl lg:text-3xl font-display font-black uppercase tracking-tighter leading-[1.1] text-center backdrop-blur-md px-4 py-2 rounded-xl", isHome ? "bg-white/60 text-black" : "bg-black/60 text-white")}>
           {title}
         </h3>
       </div>
       
       {/* Abstract Design Elements */}
-      <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-zinc-200/50 rounded-full blur-[80px] pointer-events-none" />
+      <div className={cn("absolute -bottom-20 -left-20 w-64 h-64 rounded-full blur-[80px] pointer-events-none", isHome ? "bg-zinc-200/50" : "bg-white/5")} />
     </div>
   );
 });
@@ -76,6 +84,7 @@ const ServiceCard = React.memo(({ svgPath, title, index, className }: any) => {
 export const Services = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const leftRef = useRef<HTMLDivElement>(null);
+  const isHome = useLocation().pathname === '/';
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
@@ -153,10 +162,10 @@ export const Services = () => {
   return (
     <section 
       id="services" 
-      className="relative w-full bg-white h-auto md:h-screen text-black overflow-hidden"
+      className={cn("relative w-full h-auto md:h-screen overflow-hidden", isHome ? "bg-white text-black" : "bg-transparent text-white")}
       ref={containerRef}
     >
-      <div className="w-full flex flex-col md:flex-row items-center justify-center px-6 md:px-12 py-20 md:py-0 h-full">
+      <div className="w-full flex flex-col md:flex-row items-center justify-center px-6 md:px-12 py-8 md:py-0 h-full">
         
         <div className="max-w-[1400px] mx-auto w-full flex flex-col md:flex-row gap-12 md:gap-20 h-full">
           
@@ -169,23 +178,24 @@ export const Services = () => {
                 </h2>
              </div>
              
-             <div className="relative h-[250px] w-full">
+             <div className="relative h-auto md:h-[250px] w-full">
                 {servicesList.map((s, i) => (
-                  <div 
+                  <Link
                     key={`text-${i}`} 
-                    className="service-text md:absolute md:top-0 md:left-0 w-full flex flex-col mb-12 md:mb-0"
+                    to={s.link}
+                    className="service-text group md:absolute md:top-0 md:left-0 w-full flex flex-col mb-12 md:mb-0 cursor-pointer"
                   >
                     <div className="flex items-center gap-4 mb-4 md:mb-6">
-                      <span className="text-[10px] font-mono font-bold tracking-widest text-zinc-400">0{i+1} / 04</span>
-                      <div className="h-px w-12 bg-zinc-200" />
+                      <span className={cn("text-[10px] font-mono font-bold tracking-widest transition-colors", isHome ? "text-zinc-400 group-hover:text-black" : "text-zinc-400 group-hover:text-white")}>0{i+1} / 04</span>
+                      <div className={cn("h-px w-12 group-hover:w-20 transition-all duration-300", isHome ? "bg-zinc-200" : "bg-white/20")} />
                     </div>
-                    <h3 className="text-3xl md:text-4xl font-display font-bold uppercase tracking-tight mb-4">
+                    <h3 className="text-3xl md:text-4xl font-display font-bold uppercase tracking-tight mb-4 group-hover:underline underline-offset-4 pointer-events-auto">
                       {s.title}
                     </h3>
-                    <p className="text-sm md:text-lg text-zinc-500 max-w-md leading-relaxed font-medium">
+                    <p className={cn("text-sm md:text-lg max-w-md leading-relaxed font-medium pointer-events-auto", isHome ? "text-zinc-500" : "opacity-70")}>
                       {s.description}
                     </p>
-                  </div>
+                  </Link>
                 ))}
              </div>
           </div>
@@ -193,13 +203,14 @@ export const Services = () => {
           {/* RIGHT SIDE: 3D Cards */}
           <div className="hidden md:flex w-1/2 relative items-center justify-end xl:justify-center" style={{ perspective: '2000px' }}>
             {servicesList.map((s, i) => (
-              <div 
+              <Link 
+                to={s.link}
                 key={`card-${i}`} 
-                className="service-card-3d absolute transform-gpu"
+                className="service-card-3d absolute transform-gpu block cursor-pointer"
                 style={{ transformStyle: 'preserve-3d' }}
               >
                 <ServiceCard svgPath={s.svgPath} title={s.title} index={i} />
-              </div>
+              </Link>
             ))}
           </div>
 

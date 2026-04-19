@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const ScrambleText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
   const [displayText, setDisplayText] = useState("0");
   const ref = useRef<HTMLSpanElement>(null);
-  
+
   useEffect(() => {
     if (!ref.current) return;
 
@@ -49,7 +49,7 @@ const ScrambleText = ({ text, delay = 0 }: { text: string; delay?: number }) => 
   }, [text, delay]);
 
   return (
-    <span 
+    <span
       ref={ref}
       className="inline-block tabular-nums"
     >
@@ -68,7 +68,7 @@ const SVG_PATHS = [
 const AnimatedWord = ({ word, delay, gradient = false }: { word: string, delay: number, gradient?: boolean }) => (
   <div className="overflow-hidden relative inline-flex pb-[0.2em] -mb-[0.2em]">
     <motion.span
-      initial={{ y: "100%" }}
+      initial={{ y: "-110%" }}
       animate={{ y: "0%" }}
       transition={{ duration: 1.2, delay, ease: [0.76, 0, 0.24, 1] }}
       className={cn("inline-block", gradient ? "text-transparent bg-clip-text bg-gradient-to-r from-zinc-900 to-zinc-500" : "")}
@@ -87,7 +87,7 @@ const AnimatedCapsule = ({ delay, color, width, children }: { delay: number, col
 
     const rect = containerRef.current.getBoundingClientRect();
     const particle = document.createElement("div");
-    
+
     // Choose random SVG
     const path = SVG_PATHS[Math.floor(Math.random() * SVG_PATHS.length)];
     particle.innerHTML = `<svg viewBox="0 0 256 256" width="100%" height="100%"><path d="${path}" fill="currentColor"/></svg>`;
@@ -95,11 +95,11 @@ const AnimatedCapsule = ({ delay, color, width, children }: { delay: number, col
     particle.style.pointerEvents = "none";
     // Changed to zinc-900 so it is highly visible
     particle.className = "text-zinc-900 w-4 h-4 md:w-8 md:h-8";
-    
+
     // Start at mouse position relative to container
     particle.style.left = (e.clientX - rect.left - 16) + "px";
     particle.style.top = (e.clientY - rect.top - 16) + "px";
-    
+
     containerRef.current.appendChild(particle);
 
     // Initial state
@@ -130,7 +130,7 @@ const AnimatedCapsule = ({ delay, color, width, children }: { delay: number, col
   };
 
   return (
-    <div 
+    <div
       className="relative inline-flex items-center group cursor-pointer z-50"
       ref={containerRef}
       onMouseMove={handleMouseMove}
@@ -162,19 +162,19 @@ export const Hero = () => {
       className="relative min-h-[100vh] flex flex-col justify-center px-6 md:px-12 overflow-hidden bg-[#fafafa] pt-20"
     >
       {/* Subtle Grid Background */}
-      <div 
-        className="absolute inset-0 z-0 opacity-[0.03]" 
+      <div
+        className="absolute inset-0 z-0 opacity-[0.03]"
         style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '32px 32px' }}
       />
-      
+
       <div className="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col gap-10 lg:gap-16">
-        
+
         {/* MASSIVE TYPOGRAPHY LOCKUP */}
-        <div className="w-full flex flex-col font-display font-black text-[14vw] sm:text-[11vw] md:text-[9.5vw] lg:text-[7.5vw] xl:text-[7.5rem] tracking-tighter leading-[0.85] uppercase text-zinc-900 mt-8 gap-y-3">
-          
+        <div className="w-full flex flex-col font-display font-black text-[12vw] sm:text-[11vw] md:text-[9.5vw] lg:text-[7.5vw] xl:text-[7.5rem] tracking-tighter leading-[0.85] uppercase text-zinc-900 mt-8 gap-y-3">
+
           {/* Row 1 */}
           <div className="w-full flex justify-start relative z-10">
-            <div className="flex items-center gap-x-[0.2em]">
+            <div className="flex flex-wrap md:flex-nowrap items-center gap-x-[0.2em]">
               <AnimatedWord word="BUILDING" delay={0.0} />
               <AnimatedWord word="DIGITAL" delay={0.1} />
             </div>
@@ -186,23 +186,23 @@ export const Hero = () => {
               <AnimatedWord word="SOLUTIONS" delay={0.2} />
               {/* Custom SVG Capsule */}
               <AnimatedCapsule delay={0.7} color="bg-zinc-900" width="w-[1.2em] md:w-[1.5em]">
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  viewBox="0 0 256 256" 
-                  className="w-[0.5em] h-[0.5em] text-white" 
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 256 256"
+                  className="w-[0.5em] h-[0.5em] text-white"
                   fill="none"
                 >
-                  <path 
-                    d="M 256 256 L 128 256 L 0 128 L 128 128 Z M 256 128 L 128 128 L 0 0 L 128 0 Z" 
+                  <path
+                    d="M 256 256 L 128 256 L 0 128 L 128 128 Z M 256 128 L 128 128 L 0 0 L 128 0 Z"
                     fill="currentColor"
                   />
                 </svg>
               </AnimatedCapsule>
             </div>
-            
+
             <div className="overflow-hidden relative mt-6 xl:mt-0 w-full xl:w-auto xl:max-w-xs self-start xl:self-center ml-0 xl:ml-12 flex-shrink-0">
               <motion.p
-                initial={{ y: "100%", opacity: 0 }}
+                initial={{ y: "-110%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
                 transition={{ duration: 1.2, delay: 0.56, ease: [0.76, 0, 0.24, 1] }}
                 className="text-left text-sm md:text-base font-sans normal-case tracking-normal text-zinc-600 font-medium leading-relaxed pb-2 xl:pb-0"
@@ -218,14 +218,14 @@ export const Hero = () => {
               <AnimatedWord word="THAT" delay={0.3} />
               {/* Custom SVG Spacer Capsule */}
               <AnimatedCapsule delay={0.8} color="bg-zinc-200/60 border border-zinc-300 backdrop-blur-md" width="w-[1.5em] md:w-[2em]">
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  viewBox="0 0 256 256" 
-                  className="w-[0.5em] h-[0.5em] text-black" 
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 256 256"
+                  className="w-[0.5em] h-[0.5em] text-black"
                   fill="none"
                 >
-                  <path 
-                    d="M 0 128 C 70.692 128 128 185.308 128 256 L 64 256 C 64 220.654 35.346 192 0 192 Z M 256 192 C 220.654 192 192 220.654 192 256 L 128 256 C 128 185.308 185.308 128 256 128 Z M 128 0 C 128 70.692 70.692 128 0 128 L 0 64 C 35.346 64 64 35.346 64 0 Z M 192 0 C 192 35.346 220.654 64 256 64 L 256 128 C 185.308 128 128 70.692 128 0 Z" 
+                  <path
+                    d="M 0 128 C 70.692 128 128 185.308 128 256 L 64 256 C 64 220.654 35.346 192 0 192 Z M 256 192 C 220.654 192 192 220.654 192 256 L 128 256 C 128 185.308 185.308 128 256 128 Z M 128 0 C 128 70.692 70.692 128 0 128 L 0 64 C 35.346 64 64 35.346 64 0 Z M 192 0 C 192 35.346 220.654 64 256 64 L 256 128 C 185.308 128 128 70.692 128 0 Z"
                     fill="currentColor"
                   />
                 </svg>
@@ -235,12 +235,12 @@ export const Hero = () => {
 
           {/* Rows 4 & 5 + Huge CTA in blank space */}
           <div className="w-full flex flex-col-reverse xl:flex-row items-end justify-between relative z-10 mt-4 xl:mt-0 xl:gap-0 gap-10">
-            
+
             {/* CTA inside the blank space */}
             <div className="w-full xl:w-auto flex justify-start md:pl-[5%] pb-12 xl:pb-[8%] z-50">
               <div className="overflow-hidden relative pb-4">
                 <motion.div
-                  initial={{ y: "100%" }}
+                  initial={{ y: "-110%" }}
                   animate={{ y: "0%" }}
                   transition={{ duration: 1.2, delay: 0.64, ease: [0.76, 0, 0.24, 1] }}
                   className="flex flex-wrap gap-4 items-center"
@@ -264,7 +264,7 @@ export const Hero = () => {
             <div className="flex flex-col items-end w-full xl:w-auto">
               {/* Row 4 */}
               <div className="w-full flex justify-end md:pr-[8%] relative z-10">
-                <div className="flex items-center gap-x-[0.2em]">
+                <div className="flex flex-wrap md:flex-nowrap justify-end items-center gap-x-[0.2em]">
                   <AnimatedWord word="SCALE" delay={0.4} />
                   <AnimatedWord word="YOUR" delay={0.45} />
                 </div>
@@ -281,9 +281,9 @@ export const Hero = () => {
         </div>
 
         {/* BOTTOM SECTION */}
-        <div className="w-full border-t border-zinc-200/60 pt-10 mt-6 lg:mt-12">
-          <motion.div 
-            initial={{ y: "100%", opacity: 0 }}
+        <div className="w-full border-t border-zinc-200/60 pt-10 mt-6 lg:mt-12 overflow-hidden">
+          <motion.div
+            initial={{ y: "-110%", opacity: 0 }}
             animate={{ y: "0%", opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.8, ease: [0.76, 0, 0.24, 1] }}
             className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-zinc-200/60 pb-8"
@@ -303,7 +303,7 @@ export const Hero = () => {
               <span className="text-5xl lg:text-[4rem] font-black text-zinc-900 tracking-tighter font-display flex justify-center items-end leading-none relative">
                 <ScrambleText text="5.0" delay={1.1} />
                 <div className="flex items-center ml-4 mb-2 md:mb-3 gap-1 opacity-90 group-hover:opacity-100 transition-opacity">
-                   {[...Array(5)].map((_, i) => <Star key={`star-${i}`} className="w-4 h-4 md:w-5 md:h-5 fill-yellow-400 text-yellow-400" />)}
+                  {[...Array(5)].map((_, i) => <Star key={`star-${i}`} className="w-4 h-4 md:w-5 md:h-5 fill-yellow-400 text-yellow-400" />)}
                 </div>
               </span>
               <span className="text-xs font-bold text-zinc-500 uppercase tracking-[0.25em] mt-3 group-hover:text-zinc-900 transition-colors duration-300 text-center">

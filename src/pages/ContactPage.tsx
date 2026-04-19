@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Contact } from '../components/Contact';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
@@ -8,6 +9,69 @@ import { SEO } from '../components/SEO';
 
 const ContactPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    budget: '',
+    message: ''
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // NOTE: Insert your actual EmailJS Public Key string under the PUBLIC_KEY variable to authorize these calls.
+      const SERVICE_ID = "service_gdi0zek";
+      const TEMPLATE_DEV = "template_gs69yit";
+      const TEMPLATE_USER = "template_wjychte";
+      const PUBLIC_KEY = "svu4rzarZbeeplJk2";
+
+      // 1. Send Lead Data to Developer (dev.rahulmoharana@gmail.com)
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_DEV,
+        {
+          from_name: formData.name,
+          name: formData.name,
+          email: formData.email,
+          user_email: formData.email,
+          reply_to: formData.email,
+          budget: formData.budget || 'Not specified',
+          message: formData.message,
+          to_email: 'dev.rahulmoharana@gmail.com'
+        },
+        PUBLIC_KEY
+      );
+
+      // 2. Send Acknowledgment to the User Who Filled the Form
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_USER,
+        {
+          to_name: formData.name,
+          name: formData.name,
+          to_email: formData.email,
+          user_email: formData.email,
+          email: formData.email,
+          reply_to: 'dev.rahulmoharana@gmail.com'
+        },
+        PUBLIC_KEY
+      );
+
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', budget: '', message: '' });
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useGSAP(() => {
     // Reveal contact details with stagger
@@ -81,8 +145,55 @@ const ContactPage = () => {
             </div>
           </div>
 
-          <div className="contact-form-container bg-zinc-900/40 p-4 md:p-12 rounded-3xl border border-white/5 mx-4 md:mx-0">
-             <Contact />
+          <div className="contact-form-container bg-zinc-900/40 p-6 md:p-12 rounded-3xl border border-white/5 mx-4 md:mx-0 flex flex-col justify-center">
+             <h3 className="text-2xl md:text-3xl font-display font-bold uppercase tracking-tighter mb-8">Send a Message</h3>
+             <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+                <input 
+                  type="text" 
+                  placeholder="Your Name *" 
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  className="bg-transparent border-b border-white/20 pb-4 outline-none focus:border-white transition-colors text-white placeholder:text-zinc-600" 
+                />
+                <input 
+                  type="email" 
+                  placeholder="Your Email *" 
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  className="bg-transparent border-b border-white/20 pb-4 outline-none focus:border-white transition-colors text-white placeholder:text-zinc-600" 
+                />
+                <input 
+                  type="text" 
+                  placeholder="Budget Range (Optional)" 
+                  value={formData.budget}
+                  onChange={(e) => setFormData({...formData, budget: e.target.value})}
+                  className="bg-transparent border-b border-white/20 pb-4 outline-none focus:border-white transition-colors text-white placeholder:text-zinc-600" 
+                />
+                <textarea 
+                  placeholder="Tell us about your project..." 
+                  rows={4} 
+                  required
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  className="bg-transparent border-b border-white/20 pb-4 outline-none focus:border-white transition-colors text-white placeholder:text-zinc-600 resize-none mt-2"
+                ></textarea>
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="bg-white text-black py-4 px-8 rounded-full font-bold uppercase tracking-widest mt-4 hover:bg-zinc-200 transition-colors w-full md:w-auto self-start text-xs cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Sending...' : 'Submit Inquiry'}
+                </button>
+
+                {submitStatus === 'success' && (
+                  <p className="text-green-400 font-mono text-xs mt-2">Message sent successfully!</p>
+                )}
+                {submitStatus === 'error' && (
+                  <p className="text-red-400 font-mono text-xs mt-2">Error sending message. Please try again.</p>
+                )}
+             </form>
           </div>
         </section>
       </div>

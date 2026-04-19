@@ -133,8 +133,8 @@ export const TechStack = () => {
   }, { scope: container });
 
   return (
-    <section ref={container} className="relative w-full overflow-hidden bg-white px-6 md:px-12 h-screen flex items-center justify-center">
-      <div ref={innerRef} className="max-w-5xl mx-auto flex flex-col items-center justify-center w-full relative z-10 w-full h-full pb-20 pt-20">
+    <section ref={container} className="relative w-full overflow-hidden bg-white px-6 md:px-12 h-auto md:h-screen flex items-center justify-center">
+      <div ref={innerRef} className="max-w-5xl mx-auto flex flex-col items-center justify-center w-full relative z-10 h-full py-8 md:py-20">
         
         <div className="flex flex-col items-center text-center mb-16 md:mb-24">
           <span className="text-[10px] font-mono text-zinc-400 tracking-[0.5em] uppercase mb-4">Core Capabilities</span>

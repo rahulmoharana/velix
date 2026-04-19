@@ -89,6 +89,25 @@ const WorkPage = () => {
                 </div>
               </div>
             </div>
+
+            {/* Circular Text Element */}
+            <div className="flex justify-center md:justify-end w-full relative h-[300px] md:h-[400px] items-center">
+              <div className="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
+                <svg className="absolute inset-0 w-full h-full animate-[spin_15s_linear_infinite]" viewBox="0 0 200 200">
+                  <path id="circleTextPath" d="M 100, 100 m -70, 0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0" fill="none" />
+                  <text className="text-[12px] font-mono tracking-[0.25em] uppercase fill-zinc-500">
+                    <textPath href="#circleTextPath" startOffset="0%">
+                      PREMIUM DIGITAL SERVICES • WEB DESIGN • SAAS • 
+                    </textPath>
+                  </text>
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="font-display font-black text-5xl md:text-6xl uppercase tracking-tighter text-white">
+                    VELIX
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

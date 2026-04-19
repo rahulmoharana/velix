@@ -9,6 +9,7 @@ import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Services } from "./components/Services";
 import { Portfolio } from "./components/Portfolio";
+import { Testimonial } from "./components/Testimonial";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { SmoothScroll } from "./components/SmoothScroll";
@@ -16,11 +17,16 @@ import { SEO } from "./components/SEO";
 import { FloatingWhatsApp } from "./components/FloatingWhatsApp";
 import { Preloader } from "./components/Preloader";
 import { TechStack } from "./components/TechStack";
+import { GlobalPopup } from "./components/GlobalPopup";
 import { motion, AnimatePresence } from "motion/react";
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
 const WorkPage = React.lazy(() => import("./pages/WorkPage"));
 const ServicesPage = React.lazy(() => import("./pages/ServicesPage"));
 const ContactPage = React.lazy(() => import("./pages/ContactPage"));
+const UIUXPage = React.lazy(() => import("./pages/UIUXPage"));
+const WebPlatformsPage = React.lazy(() => import("./pages/WebPlatformsPage"));
+const SaaSPage = React.lazy(() => import("./pages/SaaSPage"));
+const TechConsultingPage = React.lazy(() => import("./pages/TechConsultingPage"));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,6 +47,7 @@ const Layout = () => {
       </main>
       <Footer />
       <FloatingWhatsApp />
+      <GlobalPopup />
     </motion.div>
   );
 };
@@ -54,6 +61,7 @@ const HomePage = () => {
       <About />
       <Services />
       <Portfolio />
+      <Testimonial />
       <Contact />
     </>
   );
@@ -76,6 +84,10 @@ function App() {
               <Route path="/about-us" element={<AboutPage />} />
               <Route path="/work" element={<WorkPage />} />
               <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services/ui-ux" element={<UIUXPage />} />
+              <Route path="/services/web-platforms" element={<WebPlatformsPage />} />
+              <Route path="/services/saas" element={<SaaSPage />} />
+              <Route path="/services/technical-consulting" element={<TechConsultingPage />} />
               <Route path="/contact" element={<ContactPage />} />
             </Route>
           </Routes>

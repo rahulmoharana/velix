@@ -75,19 +75,19 @@ export const About = () => {
   }, { scope: container });
 
   return (
-    <section id="about" ref={container} className="pt-20 pb-20 md:pt-32 md:pb-32 px-6 md:px-12 relative bg-white">
+    <section id="about" ref={container} className="py-8 md:py-20 px-6 md:px-12 relative">
       <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-8">
 
         {/* Left Column */}
         <div className="w-full lg:w-[40%] flex flex-col">
-          <h2 className="flex flex-col text-black font-display font-black uppercase tracking-tighter leading-[0.85] text-[6rem] sm:text-[8rem] lg:text-[10rem]">
+          <h2 className="flex flex-col font-display font-black uppercase tracking-tighter leading-[0.85] text-[6rem] sm:text-[8rem] lg:text-[10rem]">
             <span className="about-text">ABOUT</span>
             <span className="about-text">US</span>
           </h2>
 
           <div className="mt-10 lg:mt-32 max-w-sm">
-            <h4 className="about-text font-bold text-zinc-900 mb-4 text-base md:text-lg">Modern Software and Web Engineering</h4>
-            <p className="about-text text-zinc-600 text-sm leading-relaxed font-medium">
+            <h4 className="about-text font-bold mb-4 text-base md:text-lg">Modern Software and Web Engineering</h4>
+            <p className="about-text opacity-70 text-sm leading-relaxed font-medium">
               Digital Excellence: Solutions featuring clean architecture, scalable performance, and premium user experiences.
             </p>
           </div>
@@ -115,10 +115,10 @@ export const About = () => {
           </div>
 
           <div>
-            <h3 className="about-text font-display font-bold text-3xl lg:text-4xl tracking-tight mb-4 text-black">
+            <h3 className="about-text font-display font-bold text-3xl lg:text-4xl tracking-tight mb-4">
               Our Philosophy
             </h3>
-            <p className="about-text text-zinc-600 text-sm leading-relaxed font-medium">
+            <p className="about-text opacity-70 text-sm leading-relaxed font-medium">
               At Velix Tech, we believe in creating robust, personalized digital environments that reflect our clients' visions and accelerate their growth.
             </p>
           </div>

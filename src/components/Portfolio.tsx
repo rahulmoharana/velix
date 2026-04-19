@@ -45,8 +45,8 @@ export const Portfolio = () => {
   const projects = [
     { name: "quick AI", link: "https://ai-saas-nine-rosy.vercel.app/", image: quickAiImg },
     { name: "SPLYT", link: "https://spylt-clone-tawny.vercel.app/", image: splytImg },
-    { name: "SunDown", link: "https://rahulmoharana.github.io/sundown-clone/", image: sundownImg },
-    { name: "Twogood", link: "https://rahulmoharana.github.io/two-good-co-clone/", image: twogoodImg }
+    { name: "SunDown", link: "https://sundown-clone-kappa.vercel.app/", image: sundownImg },
+    { name: "Twogood", link: "https://two-good-co-clone-phi.vercel.app/", image: twogoodImg }
   ];
 
   useEffect(() => {
@@ -73,13 +73,13 @@ export const Portfolio = () => {
   }, { scope: containerRef });
 
   return (
-    <section id="work" ref={containerRef} className="relative py-8 md:py-20 overflow-hidden">
+    <section id="work" ref={containerRef} className="relative py-8 md:py-16 overflow-hidden">
       {/* Small Heading */}
       <div className="flex flex-col gap-2 mb-12 px-6 md:px-12">
         <span className="text-[10px] font-mono uppercase tracking-[0.5em] text-zinc-400">
            Gallery / Selected
         </span>
-        <h2 className="text-5xl md:text-7xl lg:text-[6rem] font-display font-black uppercase tracking-tighter text-black leading-none">
+        <h2 className="text-5xl md:text-7xl lg:text-[6rem] font-display font-black uppercase tracking-tighter leading-none">
            Our Work
         </h2>
       </div>

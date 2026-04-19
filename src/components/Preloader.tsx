@@ -1,99 +1,113 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import React, { useEffect, useState, useRef } from 'react';
+import { motion } from 'motion/react';
 import gsap from 'gsap';
 
 export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
   const [counter, setCounter] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    // typographic counter
-    const duration = 1.5;
+    // typographic fill duration
+    const duration = 2.5; 
     const tl = gsap.timeline({
       onComplete: () => {
-        // Give a tiny beat at 100%
-        setTimeout(onComplete, 500);
+        setTimeout(onComplete, 400);
       }
     });
 
-    tl.to(".preloader-title", {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "expo.out",
-    });
-
+    // Simulate loading progress
     tl.to({}, {
       duration: duration,
       onUpdate: function() {
         setCounter(Math.round(this.progress() * 100));
       },
-      ease: "power4.inOut"
-    }, "-=0.5");
+      ease: "power2.inOut"
+    });
 
-    // Exit animation for elements
+    // Exit animation 
     tl.to(".preloader-content", {
-      y: -100,
+      scale: 1.1,
       opacity: 0,
       duration: 0.8,
-      ease: "expo.inOut"
-    }, "+=0.2");
+      ease: "expo.in"
+    });
 
     tl.to(".preloader-bg", {
-      height: 0,
-       duration: 1.2,
+      yPercent: -100,
+      duration: 1.2,
       ease: "expo.inOut",
       stagger: 0.1
     }, "-=0.4");
 
+    // Interactive mouse Move parallex effect
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+      const { clientX, clientY } = e;
+      const x = (clientX / window.innerWidth - 0.5) * 40;
+      const y = (clientY / window.innerHeight - 0.5) * 40;
+      setMousePosition({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+
   }, [onComplete]);
 
   return (
-    <div className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden">
+    <div ref={containerRef} className="fixed inset-0 z-[9999] pointer-events-auto overflow-hidden bg-[#080805]">
       {/* Background Layers */}
       <div className="preloader-bg absolute inset-0 bg-black z-0 h-full w-full" />
-      <div className="preloader-bg absolute inset-0 bg-zinc-900 z-0 h-full w-full" />
+      <div className="preloader-bg absolute inset-0 bg-[#080805] z-0 h-full w-full" />
       
       {/* Content */}
-      <div className="preloader-content relative z-10 h-full w-full flex flex-col items-center justify-center text-white pointer-events-auto">
-        <div className="overflow-hidden mb-4">
-          <h2 className="preloader-title text-sm md:text-base font-display font-medium uppercase tracking-[0.8em] opacity-0 translate-y-full">
-            VELIX
-          </h2>
-        </div>
-
-        <div className="overflow-hidden">
-          <motion.span 
-            initial={{ y: 100 }}
-            animate={{ y: 0 }}
-            className="block text-[25vw] md:text-[15vw] font-display font-black leading-none tracking-tighter"
-          >
-            {counter}
-          </motion.span>
-        </div>
+      <div className="preloader-content relative z-10 h-full w-full flex flex-col items-center justify-center text-white pointer-events-none">
         
-        <div className="mt-4 flex items-center gap-4 overflow-hidden">
+        <motion.div 
+          animate={{ x: mousePosition.x, y: mousePosition.y }}
+          transition={{ type: "spring", damping: 30, stiffness: 100, mass: 0.5 }}
+          className="relative inline-block select-none"
+        >
+          {/* Outline Base Text */}
+          <h1 
+            className="text-[25vw] md:text-[20vw] font-display font-black leading-none tracking-tighter"
+            style={{ 
+              WebkitTextStroke: '1px rgba(255,255,255,0.2)', 
+              color: 'transparent'
+            }}
+          >
+            VELIX
+          </h1>
+
+          {/* Filled Text clipping vertically acting as loader mask */}
+          <h1 
+            className="absolute top-0 left-0 text-[25vw] md:text-[20vw] font-display font-black leading-none tracking-tighter text-white pointer-events-none"
+            style={{ 
+              clipPath: `inset(${100 - counter}% 0 0 0)`
+            }}
+          >
+            VELIX
+          </h1>
+        </motion.div>
+
+        <div className="mt-12 flex flex-col items-center gap-4 overflow-hidden relative">
           <motion.div 
-             initial={{ x: -100, opacity: 0 }}
-             animate={{ x: 0, opacity: 1 }}
-             transition={{ delay: 0.5 }}
-             className="w-12 h-px bg-white/20" 
-          />
-          <span className="text-[10px] uppercase font-mono tracking-[0.4em] text-white/40">
-            Initialising Experience
-          </span>
-           <motion.div 
-             initial={{ x: 100, opacity: 0 }}
-             animate={{ x: 0, opacity: 1 }}
-             transition={{ delay: 0.5 }}
-             className="w-12 h-px bg-white/20" 
-          />
+             initial={{ width: 0 }}
+             animate={{ width: "200px" }}
+             transition={{ duration: 2.5, ease: "easeInOut" }}
+             className="h-px bg-white/20 relative rounded-full overflow-hidden" 
+          >
+            <div 
+              className="absolute left-0 top-0 bottom-0 bg-white" 
+              style={{ width: `${counter}%` }}
+            />
+          </motion.div>
+          <div className="flex gap-4 items-center">
+            <span className="text-[10px] font-mono tracking-widest text-white/50 uppercase">Loading Environment</span>
+            <span className="text-xs font-mono font-bold text-white w-8 text-right">{counter}%</span>
+          </div>
         </div>
 
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
-             <span className="text-[8px] uppercase font-mono tracking-widest text-white/20">
-               Velix Digital Agency © 2026
-             </span>
-        </div>
       </div>
     </div>
   );
