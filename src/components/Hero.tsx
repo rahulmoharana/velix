@@ -170,20 +170,20 @@ export const Hero = () => {
       <div className="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col gap-10 lg:gap-16">
 
         {/* MASSIVE TYPOGRAPHY LOCKUP */}
-        <div className="w-full flex flex-col font-display font-black text-[12vw] sm:text-[11vw] md:text-[9.5vw] lg:text-[7.5vw] xl:text-[7.5rem] tracking-tighter leading-[0.85] uppercase text-zinc-900 mt-8 gap-y-3">
+        <div className="w-full flex flex-col font-display font-black text-[12vw] sm:text-[11vw] md:text-[9.5vw] lg:text-[7.5vw] xl:text-[7.5rem] tracking-tighter leading-[0.8] uppercase text-zinc-900 mt-8 gap-y-0">
 
           {/* Row 1 */}
           <div className="w-full flex justify-start relative z-10">
             <div className="flex flex-wrap md:flex-nowrap items-center gap-x-[0.2em]">
-              <AnimatedWord word="BUILDING" delay={0.0} />
-              <AnimatedWord word="DIGITAL" delay={0.1} />
+              <AnimatedWord word="YOUR" delay={0.0} />
+              <AnimatedWord word="BUSINESS" delay={0.1} />
             </div>
           </div>
 
           {/* Row 2 - Text, Capsule, Description */}
           <div className="w-full flex flex-col xl:flex-row items-start xl:items-center justify-start z-20">
             <div className="flex items-center gap-x-[0.2em] w-full xl:w-auto">
-              <AnimatedWord word="SOLUTIONS" delay={0.2} />
+              <AnimatedWord word="DESERVES" delay={0.2} />
               {/* Custom SVG Capsule */}
               <AnimatedCapsule delay={0.7} color="bg-zinc-900" width="w-[1.2em] md:w-[1.5em]">
                 <svg
@@ -200,14 +200,14 @@ export const Hero = () => {
               </AnimatedCapsule>
             </div>
 
-            <div className="overflow-hidden relative mt-6 xl:mt-0 w-full xl:w-auto xl:max-w-xs self-start xl:self-center ml-0 xl:ml-12 flex-shrink-0">
+            <div className="overflow-hidden relative mt-1 xl:mt-0 w-full xl:w-auto xl:max-w-xs self-start xl:self-center ml-0 xl:ml-12 flex-shrink-0">
               <motion.p
                 initial={{ y: "-110%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
                 transition={{ duration: 1.2, delay: 0.56, ease: [0.76, 0, 0.24, 1] }}
                 className="text-left text-sm md:text-base font-sans normal-case tracking-normal text-zinc-600 font-medium leading-relaxed pb-2 xl:pb-0"
               >
-                From startup MVPs to enterprise platforms — we transform your vision into powerful web and mobile applications that drive measurable results.
+                We partner with ambitious businesses in Bhubaneswar and across India to build custom web applications, mobile solutions, and enterprise software that eliminate bottlenecks and unlock new revenue streams.
               </motion.p>
             </div>
           </div>
@@ -215,7 +215,7 @@ export const Hero = () => {
           {/* Row 3 - THAT + Blank space capsule */}
           <div className="w-full flex justify-start relative z-10">
             <div className="flex items-center gap-x-[0.2em]">
-              <AnimatedWord word="THAT" delay={0.3} />
+              <AnimatedWord word="SOFTWARE" delay={0.3} />
               {/* Custom SVG Spacer Capsule */}
               <AnimatedCapsule delay={0.8} color="bg-zinc-200/60 border border-zinc-300 backdrop-blur-md" width="w-[1.5em] md:w-[2em]">
                 <svg
@@ -234,7 +234,7 @@ export const Hero = () => {
           </div>
 
           {/* Rows 4 & 5 + Huge CTA in blank space */}
-          <div className="w-full flex flex-col-reverse xl:flex-row items-end justify-between relative z-10 mt-4 xl:mt-0 xl:gap-0 gap-10">
+          <div className="w-full flex flex-col-reverse xl:flex-row items-end justify-between relative z-10 mt-1 xl:mt-0 xl:gap-0 gap-10">
 
             {/* CTA inside the blank space */}
             <div className="w-full xl:w-auto flex justify-start md:pl-[5%] pb-12 xl:pb-[8%] z-50">
@@ -246,14 +246,14 @@ export const Hero = () => {
                   className="flex flex-wrap gap-4 items-center"
                 >
                   <Link to="/contact">
-                    <button className="btn-velix group shadow-xl shadow-zinc-900/10 px-8 py-4 text-base md:text-lg font-semibold gap-3">
-                      Start Project
-                      <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                    <button className="btn-velix group shadow-xl shadow-zinc-900/10 px-5 py-2.5 text-xs md:text-sm font-semibold gap-2">
+                      Get a Free Consultation
+                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                     </button>
                   </Link>
                   <Link to="/work">
-                    <button className="btn-glass px-8 py-4 text-base md:text-lg font-medium">
-                      Our Work
+                    <button className="btn-glass px-5 py-2.5 text-xs md:text-sm font-medium">
+                      See Case Studies
                     </button>
                   </Link>
                 </motion.div>
@@ -265,15 +265,15 @@ export const Hero = () => {
               {/* Row 4 */}
               <div className="w-full flex justify-end md:pr-[8%] relative z-10">
                 <div className="flex flex-wrap md:flex-nowrap justify-end items-center gap-x-[0.2em]">
-                  <AnimatedWord word="SCALE" delay={0.4} />
-                  <AnimatedWord word="YOUR" delay={0.45} />
+                  <AnimatedWord word="THAT" delay={0.4} />
+                  <AnimatedWord word="DELIVERS" delay={0.45} />
                 </div>
               </div>
 
               {/* Row 5 */}
               <div className="w-full flex justify-end md:pr-[2%] relative z-10 mt-1 md:mt-2">
                 <div className="flex items-center gap-x-[0.2em]">
-                  <AnimatedWord word="BUSINESS." delay={0.5} gradient={true} />
+                  <AnimatedWord word="RESULTS." delay={0.5} gradient={true} />
                 </div>
               </div>
             </div>
@@ -291,33 +291,30 @@ export const Hero = () => {
             {/* Stat 1 */}
             <div className="flex flex-col gap-2 items-center justify-center w-full group cursor-crosshair py-6 md:py-0">
               <span className="text-5xl lg:text-[4rem] font-black text-zinc-900 tracking-tighter font-display flex justify-center items-center leading-none">
-                <ScrambleText text="150" delay={0.9} /><span className="text-emerald-500 font-bold ml-1 text-4xl lg:text-5xl">+</span>
+                MERN
               </span>
               <span className="text-xs font-bold text-zinc-500 uppercase tracking-[0.25em] mt-3 group-hover:text-zinc-900 transition-colors duration-300 text-center">
-                Successful Projects
+                Modern Stack
               </span>
             </div>
 
             {/* Stat 2 */}
             <div className="flex flex-col gap-2 items-center justify-center w-full group cursor-crosshair py-6 md:py-0">
-              <span className="text-5xl lg:text-[4rem] font-black text-zinc-900 tracking-tighter font-display flex justify-center items-end leading-none relative">
-                <ScrambleText text="5.0" delay={1.1} />
-                <div className="flex items-center ml-4 mb-2 md:mb-3 gap-1 opacity-90 group-hover:opacity-100 transition-opacity">
-                  {[...Array(5)].map((_, i) => <Star key={`star-${i}`} className="w-4 h-4 md:w-5 md:h-5 fill-yellow-400 text-yellow-400" />)}
-                </div>
+              <span className="text-5xl lg:text-[4rem] font-black text-zinc-900 tracking-tighter font-display flex justify-center items-center leading-none">
+                <ScrambleText text="150" delay={1.1} /><span className="text-emerald-500 font-bold ml-1 text-4xl lg:text-5xl">+</span>
               </span>
               <span className="text-xs font-bold text-zinc-500 uppercase tracking-[0.25em] mt-3 group-hover:text-zinc-900 transition-colors duration-300 text-center">
-                Google Rating
+                Projects Delivered
               </span>
             </div>
 
             {/* Stat 3 */}
             <div className="flex flex-col gap-2 items-center justify-center w-full group cursor-crosshair py-6 md:py-0">
               <span className="text-5xl lg:text-[4rem] font-black text-zinc-900 tracking-tighter font-display flex justify-center items-center leading-none">
-                <ScrambleText text="99" delay={1.3} /><span className="text-blue-500 font-medium ml-2 text-4xl lg:text-5xl">%</span>
+                <ScrambleText text="98" delay={1.3} /><span className="text-blue-500 font-medium ml-2 text-4xl lg:text-5xl">%</span>
               </span>
               <span className="text-xs font-bold text-zinc-500 uppercase tracking-[0.25em] mt-3 group-hover:text-zinc-900 transition-colors duration-300 text-center">
-                Client Success Rate
+                Client Retention
               </span>
             </div>
           </motion.div>

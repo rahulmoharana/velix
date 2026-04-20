@@ -11,9 +11,9 @@ interface SEOProps {
 }
 
 export const SEO: React.FC<SEOProps> = ({ 
-  title = "VELIX | Best Website Creation & Software Developer Agency in Bhubaneswar, Odisha", 
-  description = "VELIX is the leading website creation and software development agency in Bhubaneswar, Odisha. We build premium digital experiences, high-performance websites, and scalable software solutions.",
-  keywords = "website creation agency bhubaneswar, software developer agency odisha, digital marketing bhubaneswar, web development company odisha, IT startup bhubaneswar, velix tech",
+  title = "VELIX - Web & Software Development Company in Bhubaneswar | Custom Solutions", 
+  description = "VELIX offers premium web development, software solutions, and mobile app development in Bhubaneswar, Odisha. We deliver custom digital solutions at scale.",
+  keywords = "Web development company in Bhubaneswar, Software development agency Bhubaneswar, Website design services Odisha, Custom software solutions Bhubaneswar, Mobile app development Bhubaneswar, E-commerce website development Odisha, Digital solutions Bhubaneswar, React.js development Bhubaneswar, Node.js development India, Cloud solutions Odisha, Enterprise software development, API development services",
   url = "https://www.velixinfo.tech/",
   image = "https://www.velixinfo.tech/og-image.jpg",
   schema
@@ -24,6 +24,7 @@ export const SEO: React.FC<SEOProps> = ({
     "name": "VELIX",
     "url": "https://www.velixinfo.tech",
     "logo": "https://www.velixinfo.tech/logo.png",
+    "description": "Leading Web and Software Development Company in Bhubaneswar providing custom digital solutions.",
     "sameAs": [
       "https://twitter.com/velixtech",
       "https://linkedin.com/company/velixtech",
@@ -31,8 +32,10 @@ export const SEO: React.FC<SEOProps> = ({
     ],
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Infocity, Patia",
       "addressLocality": "Bhubaneswar",
       "addressRegion": "Odisha",
+      "postalCode": "751024",
       "addressCountry": "IN"
     },
     "contactPoint": {

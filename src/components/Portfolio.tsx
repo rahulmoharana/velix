@@ -10,6 +10,7 @@ import quickAiImg from '../assets/1-QuickAi.png';
 import splytImg from '../assets/2-Splyt.png';
 import sundownImg from '../assets/3-Sundown.png';
 import twogoodImg from '../assets/4-twofoodco.png';
+import velixEduImg from '../assets/5-VelixEdu.png';
 
 const Marquee = ({ text }: { text: string }) => {
   return (
@@ -46,7 +47,8 @@ export const Portfolio = () => {
     { name: "quick AI", link: "https://ai-saas-nine-rosy.vercel.app/", image: quickAiImg },
     { name: "SPLYT", link: "https://spylt-clone-tawny.vercel.app/", image: splytImg },
     { name: "SunDown", link: "https://sundown-clone-kappa.vercel.app/", image: sundownImg },
-    { name: "Twogood", link: "https://two-good-co-clone-phi.vercel.app/", image: twogoodImg }
+    { name: "Twogood", link: "https://two-good-co-clone-phi.vercel.app/", image: twogoodImg },
+    { name: "Velix Edu", link: "#", image: velixEduImg }
   ];
 
   useEffect(() => {

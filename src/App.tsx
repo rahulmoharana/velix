@@ -18,12 +18,25 @@ import { FloatingWhatsApp } from "./components/FloatingWhatsApp";
 import { Preloader } from "./components/Preloader";
 import { TechStack } from "./components/TechStack";
 import { GlobalPopup } from "./components/GlobalPopup";
+import { BlogSection } from "./components/BlogSection";
 import { motion, AnimatePresence } from "motion/react";
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
 const WorkPage = React.lazy(() => import("./pages/WorkPage"));
 const ServicesPage = React.lazy(() => import("./pages/ServicesPage"));
 const ContactPage = React.lazy(() => import("./pages/ContactPage"));
 const UIUXPage = React.lazy(() => import("./pages/UIUXPage"));
+const WebDevPage = React.lazy(() => import("./pages/WebDevPage"));
+const SoftwareDevPage = React.lazy(() => import("./pages/SoftwareDevPage"));
+const MobileAppsPage = React.lazy(() => import("./pages/MobileAppsPage"));
+const DigitalMarketingPage = React.lazy(() => import("./pages/DigitalMarketingPage"));
+const EcommercePage = React.lazy(() => import("./pages/EcommercePage"));
+const HealthcarePage = React.lazy(() => import("./pages/HealthcarePage"));
+const EdTechPage = React.lazy(() => import("./pages/EdTechPage"));
+const BusinessMgmtPage = React.lazy(() => import("./pages/BusinessMgmtPage"));
+const PrivacyPolicyPage = React.lazy(() => import("./pages/PrivacyPolicyPage"));
+const TermsOfServicePage = React.lazy(() => import("./pages/TermsOfServicePage"));
+const CareerPage = React.lazy(() => import("./pages/CareerPage"));
+const BlogPage = React.lazy(() => import("./pages/BlogPage"));
 const WebPlatformsPage = React.lazy(() => import("./pages/WebPlatformsPage"));
 const SaaSPage = React.lazy(() => import("./pages/SaaSPage"));
 const TechConsultingPage = React.lazy(() => import("./pages/TechConsultingPage"));
@@ -62,6 +75,7 @@ const HomePage = () => {
       <Services />
       <Portfolio />
       <Testimonial />
+      <BlogSection />
       <Contact />
     </>
   );
@@ -84,11 +98,23 @@ function App() {
               <Route path="/about-us" element={<AboutPage />} />
               <Route path="/work" element={<WorkPage />} />
               <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services/web-development" element={<WebDevPage />} />
+              <Route path="/services/software-development" element={<SoftwareDevPage />} />
+              <Route path="/services/mobile-apps" element={<MobileAppsPage />} />
               <Route path="/services/ui-ux" element={<UIUXPage />} />
+              <Route path="/services/digital-marketing" element={<DigitalMarketingPage />} />
+              <Route path="/industries/ecommerce" element={<EcommercePage />} />
+              <Route path="/industries/healthcare" element={<HealthcarePage />} />
+              <Route path="/industries/edtech" element={<EdTechPage />} />
+              <Route path="/industries/business-management" element={<BusinessMgmtPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+              <Route path="/careers" element={<CareerPage />} />
+              <Route path="/blog" element={<BlogPage />} />
               <Route path="/services/web-platforms" element={<WebPlatformsPage />} />
               <Route path="/services/saas" element={<SaaSPage />} />
               <Route path="/services/technical-consulting" element={<TechConsultingPage />} />
-              <Route path="/contact" element={<ContactPage />} />
             </Route>
           </Routes>
         </Router>
@@ -98,4 +124,3 @@ function App() {
 }
 
 export default App;
-

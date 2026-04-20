@@ -23,27 +23,33 @@ const SVG_PATHS = [
 const servicesList = [
   {
     svgPath: SVG_PATHS[0],
-    title: "UI/UX Experience",
-    description: "Bespoke, high-end visual identities and website layouts crafted meticulously from scratch. We architect journeys that transform casual visitors into devoted customers.",
-    link: "/services/ui-ux"
+    title: "Web Development",
+    description: "Premium website development services in Bhubaneswar. We build high-performance, SEO-optimized React.js websites and custom CMS solutions for modern businesses.",
+    link: "/services/web-development"
   },
   {
     svgPath: SVG_PATHS[1],
-    title: "Web Platforms",
-    description: "Lightning-fast, immersive landing pages and full-scale enterprise CMS solutions. Built on modern stacks capable of handling massive scale.",
-    link: "/services/web-platforms"
+    title: "Software Development",
+    description: "Custom software solutions in Bhubaneswar. Enterprise-grade Node.js and Python development tailored to eliminate your business bottlenecks.",
+    link: "/services/software-development"
   },
   {
     svgPath: SVG_PATHS[2],
-    title: "SaaS Infrastructure",
-    description: "Robust end-to-end software development. We build the architecture, APIs, and front-end tools that power next-generation startups.",
-    link: "/services/saas"
+    title: "Mobile App Development",
+    description: "Native and cross-platform mobile apps. We engineer scalable iOS and Android solutions that provide seamless user experiences.",
+    link: "/services/mobile-apps"
+  },
+  {
+    svgPath: SVG_PATHS[0],
+    title: "UI/UX Design",
+    description: "Human-centric design that converts. Our Bhubaneswar-based design team crafts intuitive interfaces and premium brand identities.",
+    link: "/services/ui-ux"
   },
   {
     svgPath: SVG_PATHS[3],
-    title: "Technical Consulting",
-    description: "Expert mentorship and architectural guidance for complex student projects and startup MVPs, ensuring technical depth and success.",
-    link: "/services/technical-consulting"
+    title: "Digital Marketing",
+    description: "Results-driven digital strategy in Odisha. From SEO audits to content marketing, we grow your online presence and ROI.",
+    link: "/services/digital-marketing"
   }
 ];
 
@@ -186,7 +192,7 @@ export const Services = () => {
                     className="service-text group md:absolute md:top-0 md:left-0 w-full flex flex-col mb-12 md:mb-0 cursor-pointer"
                   >
                     <div className="flex items-center gap-4 mb-4 md:mb-6">
-                      <span className={cn("text-[10px] font-mono font-bold tracking-widest transition-colors", isHome ? "text-zinc-400 group-hover:text-black" : "text-zinc-400 group-hover:text-white")}>0{i+1} / 04</span>
+                      <span className={cn("text-[10px] font-mono font-bold tracking-widest transition-colors", isHome ? "text-zinc-400 group-hover:text-black" : "text-zinc-400 group-hover:text-white")}>0{i+1} / 05</span>
                       <div className={cn("h-px w-12 group-hover:w-20 transition-all duration-300", isHome ? "bg-zinc-200" : "bg-white/20")} />
                     </div>
                     <h3 className="text-3xl md:text-4xl font-display font-bold uppercase tracking-tight mb-4 group-hover:underline underline-offset-4 pointer-events-auto">
