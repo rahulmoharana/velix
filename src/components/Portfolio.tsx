@@ -151,6 +151,7 @@ export const Portfolio = () => {
               src={projects[hoveredIndex].image}
               alt={projects[hoveredIndex].name}
               className="w-full h-full object-cover"
+              loading="lazy"
               initial={{ opacity: 0, scale: 1.1 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}

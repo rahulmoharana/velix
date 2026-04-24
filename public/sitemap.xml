@@ -30,4 +30,41 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.velixinfo.tech/sitemap</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- Programmatic Location Pages -->
+  <url><loc>https://www.velixinfo.tech/location/khordha</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/cuttack</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/puri</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/sambalpur</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/balasore</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/angul</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/balangir</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/bargarh</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/bhadrak</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/boudh</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/deogarh</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/dhenkanal</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/gajapati</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/ganjam</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/jagatsinghpur</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/jajpur</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/jharsuguda</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/kalahandi</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/kandhamal</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/kendrapara</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/kendujhar</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/koraput</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/malkangiri</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/mayurbhanj</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/nabarangpur</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/nayagarh</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/nuapada</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/rayagada</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/subarnapur</loc><priority>0.5</priority></url>
+  <url><loc>https://www.velixinfo.tech/location/sundargarh</loc><priority>0.5</priority></url>
 </urlset>

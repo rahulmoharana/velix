@@ -53,10 +53,18 @@ export const Footer = () => {
           </div>
           <div className="flex flex-col gap-4">
             <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">Connect</span>
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-wrap gap-6 mb-4">
               <Twitter className="w-5 h-5 opacity-40 hover:opacity-100 cursor-pointer transition-opacity text-current" />
               <Linkedin className="w-5 h-5 opacity-40 hover:opacity-100 cursor-pointer transition-opacity text-current" />
               <Instagram className="w-5 h-5 opacity-40 hover:opacity-100 cursor-pointer transition-opacity text-current" />
+            </div>
+            <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest mt-2">Locations</span>
+            <div className="flex flex-col gap-2">
+              <Link to="/location/khordha" className="text-sm hover:opacity-50 transition-opacity">Khordha</Link>
+              <Link to="/location/cuttack" className="text-sm hover:opacity-50 transition-opacity">Cuttack</Link>
+              <Link to="/location/puri" className="text-sm hover:opacity-50 transition-opacity">Puri</Link>
+              <Link to="/location/sambalpur" className="text-sm hover:opacity-50 transition-opacity">Sambalpur</Link>
+              <Link to="/sitemap" className="text-[10px] font-bold uppercase tracking-widest mt-2 hover:opacity-50 underline underline-offset-4">View All Locations</Link>
             </div>
           </div>
         </div>

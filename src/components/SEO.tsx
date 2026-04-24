@@ -23,7 +23,7 @@ export const SEO: React.FC<SEOProps> = ({
     "@type": "Organization",
     "name": "VELIX",
     "url": "https://www.velixinfo.tech",
-    "logo": "https://www.velixinfo.tech/logo.png",
+    "logo": "https://www.velixinfo.tech/logo.webp",
     "description": "Leading Web and Software Development Company in Bhubaneswar providing custom digital solutions.",
     "sameAs": [
       "https://twitter.com/velixtech",

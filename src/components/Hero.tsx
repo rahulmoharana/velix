@@ -170,7 +170,7 @@ export const Hero = () => {
       <div className="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col gap-10 lg:gap-16">
 
         {/* MASSIVE TYPOGRAPHY LOCKUP */}
-        <div className="w-full flex flex-col font-display font-black text-[12vw] sm:text-[11vw] md:text-[9.5vw] lg:text-[7.5vw] xl:text-[7.5rem] tracking-tighter leading-[0.8] uppercase text-zinc-900 mt-8 gap-y-0">
+        <h1 className="w-full flex flex-col font-display font-black text-[12vw] sm:text-[11vw] md:text-[9.5vw] lg:text-[7.5vw] xl:text-[7.5rem] tracking-tighter leading-[0.8] uppercase text-zinc-900 mt-8 gap-y-0">
 
           {/* Row 1 */}
           <div className="w-full flex justify-start relative z-10">
@@ -278,7 +278,7 @@ export const Hero = () => {
               </div>
             </div>
           </div>
-        </div>
+        </h1>
 
         {/* BOTTOM SECTION */}
         <div className="w-full border-t border-zinc-200/60 pt-10 mt-6 lg:mt-12 overflow-hidden">

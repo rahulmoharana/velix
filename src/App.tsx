@@ -40,6 +40,8 @@ const BlogPage = React.lazy(() => import("./pages/BlogPage"));
 const WebPlatformsPage = React.lazy(() => import("./pages/WebPlatformsPage"));
 const SaaSPage = React.lazy(() => import("./pages/SaaSPage"));
 const TechConsultingPage = React.lazy(() => import("./pages/TechConsultingPage"));
+const LocationPage = React.lazy(() => import("./pages/LocationPage"));
+const SitemapPage = React.lazy(() => import("./pages/SitemapPage"));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -115,6 +117,8 @@ function App() {
               <Route path="/services/web-platforms" element={<WebPlatformsPage />} />
               <Route path="/services/saas" element={<SaaSPage />} />
               <Route path="/services/technical-consulting" element={<TechConsultingPage />} />
+              <Route path="/location/:district" element={<LocationPage />} />
+              <Route path="/sitemap" element={<SitemapPage />} />
             </Route>
           </Routes>
         </Router>

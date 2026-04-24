@@ -89,6 +89,7 @@ export const About = () => {
                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80"
                 alt="VELIX HQ"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-10 text-white">
                 <span className="text-[10px] font-mono uppercase tracking-[0.4em] mb-2">Our Space / Bhubaneswar</span>

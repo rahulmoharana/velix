@@ -8,37 +8,38 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    // typographic fill duration
-    const duration = 2.5; 
     const tl = gsap.timeline({
-      onComplete: () => {
-        setTimeout(onComplete, 400);
+      onComplete: onComplete
+    });
+
+    // Animate characters and subtitle
+    tl.fromTo(".char", 
+      { y: 150, opacity: 0 },
+      { 
+        y: 0, 
+        opacity: 1, 
+        stagger: 0.04, 
+        duration: 0.5, 
+        ease: "power4.out" 
       }
-    });
+    );
 
-    // Simulate loading progress
-    tl.to({}, {
-      duration: duration,
-      onUpdate: function() {
-        setCounter(Math.round(this.progress() * 100));
-      },
-      ease: "power2.inOut"
-    });
+    // Short pause
+    tl.to({}, { duration: 0.15 });
 
-    // Exit animation 
+    // Exit animation - very swift
     tl.to(".preloader-content", {
-      scale: 1.1,
+      y: -80,
       opacity: 0,
-      duration: 0.8,
-      ease: "expo.in"
+      duration: 0.3,
+      ease: "power4.in"
     });
 
     tl.to(".preloader-bg", {
       yPercent: -100,
-      duration: 1.2,
-      ease: "expo.inOut",
-      stagger: 0.1
-    }, "-=0.4");
+      duration: 0.4,
+      ease: "expo.inOut"
+    }, "-=0.15");
 
     // Interactive mouse Move parallex effect
     const handleMouseMove = (e: MouseEvent) => {
@@ -66,46 +67,22 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
         <motion.div 
           animate={{ x: mousePosition.x, y: mousePosition.y }}
           transition={{ type: "spring", damping: 30, stiffness: 100, mass: 0.5 }}
-          className="relative inline-block select-none"
+          className="relative flex select-none overflow-hidden"
         >
-          {/* Outline Base Text */}
-          <h1 
-            className="text-[25vw] md:text-[20vw] font-display font-black leading-none tracking-tighter"
-            style={{ 
-              WebkitTextStroke: '1px rgba(255,255,255,0.2)', 
-              color: 'transparent'
-            }}
-          >
-            VELIX
-          </h1>
-
-          {/* Filled Text clipping vertically acting as loader mask */}
-          <h1 
-            className="absolute top-0 left-0 text-[25vw] md:text-[20vw] font-display font-black leading-none tracking-tighter text-white pointer-events-none"
-            style={{ 
-              clipPath: `inset(${100 - counter}% 0 0 0)`
-            }}
-          >
-            VELIX
-          </h1>
+          {"VELIX".split("").map((char, index) => (
+            <span 
+              key={index} 
+              className="char text-[25vw] md:text-[20vw] font-display font-black leading-none tracking-tighter inline-block"
+            >
+              {char}
+            </span>
+          ))}
         </motion.div>
 
-        <div className="mt-12 flex flex-col items-center gap-4 overflow-hidden relative">
-          <motion.div 
-             initial={{ width: 0 }}
-             animate={{ width: "200px" }}
-             transition={{ duration: 2.5, ease: "easeInOut" }}
-             className="h-px bg-white/20 relative rounded-full overflow-hidden" 
-          >
-            <div 
-              className="absolute left-0 top-0 bottom-0 bg-white" 
-              style={{ width: `${counter}%` }}
-            />
-          </motion.div>
-          <div className="flex gap-4 items-center">
-            <span className="text-[10px] font-mono tracking-widest text-white/50 uppercase">Loading Environment</span>
-            <span className="text-xs font-mono font-bold text-white w-8 text-right">{counter}%</span>
-          </div>
+        <div className="mt-8 flex flex-col items-center gap-2 overflow-hidden relative">
+          <span className="char text-[10px] font-mono tracking-[0.5em] text-white/30 uppercase">
+            Digital Agency
+          </span>
         </div>
 
       </div>
