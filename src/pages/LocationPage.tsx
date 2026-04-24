@@ -43,7 +43,7 @@ const LocationPage = () => {
               className="text-5xl md:text-8xl font-display font-black uppercase tracking-tighter leading-none mb-8"
             >
               Elevating Digital <br /> Excellence in <span className="text-zinc-400">{districtName}</span>
-            </h1 >
+            </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
