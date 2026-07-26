@@ -22,7 +22,7 @@ const SitemapPage = () => {
           Sitemap
         </motion.h1>
 
-        <div className="grid md:grid-cols-3 gap-20">
+        <div className="grid md:grid-cols-3 gap-16 gap-y-20">
           {/* Main Pages */}
           <section>
             <h2 className="text-[10px] font-mono uppercase tracking-[0.5em] text-zinc-400 mb-8">Main Pages</h2>
@@ -31,6 +31,7 @@ const SitemapPage = () => {
               <Link to="/about-us" className="text-xl font-bold hover:opacity-50 transition-opacity">About Us</Link>
               <Link to="/work" className="text-xl font-bold hover:opacity-50 transition-opacity">Our Work</Link>
               <Link to="/services" className="text-xl font-bold hover:opacity-50 transition-opacity">Services</Link>
+              <Link to="/careers" className="text-xl font-bold hover:opacity-50 transition-opacity">Careers</Link>
               <Link to="/contact" className="text-xl font-bold hover:opacity-50 transition-opacity">Contact</Link>
               <Link to="/blog" className="text-xl font-bold hover:opacity-50 transition-opacity">Insights</Link>
             </div>
@@ -44,8 +45,21 @@ const SitemapPage = () => {
               <Link to="/services/software-development" className="text-lg font-medium hover:opacity-50">Software Solutions</Link>
               <Link to="/services/mobile-apps" className="text-lg font-medium hover:opacity-50">Mobile Applications</Link>
               <Link to="/services/ui-ux" className="text-lg font-medium hover:opacity-50">UI/UX Strategy</Link>
+              <Link to="/services/digital-marketing" className="text-lg font-medium hover:opacity-50">Digital Marketing</Link>
               <Link to="/services/saas" className="text-lg font-medium hover:opacity-50">SaaS Products</Link>
               <Link to="/services/web-platforms" className="text-lg font-medium hover:opacity-50">Web Platforms</Link>
+              <Link to="/services/technical-consulting" className="text-lg font-medium hover:opacity-50">Technical Consulting</Link>
+            </div>
+          </section>
+
+          {/* Industries */}
+          <section>
+            <h2 className="text-[10px] font-mono uppercase tracking-[0.5em] text-zinc-400 mb-8">Industries</h2>
+            <div className="flex flex-col gap-4">
+              <Link to="/industries/ecommerce" className="text-lg font-medium hover:opacity-50">E-Commerce</Link>
+              <Link to="/industries/healthcare" className="text-lg font-medium hover:opacity-50">Healthcare</Link>
+              <Link to="/industries/edtech" className="text-lg font-medium hover:opacity-50">EdTech</Link>
+              <Link to="/industries/business-management" className="text-lg font-medium hover:opacity-50">Business Management</Link>
             </div>
           </section>
 
@@ -62,6 +76,15 @@ const SitemapPage = () => {
                   {district}
                 </Link>
               ))}
+            </div>
+          </section>
+
+          {/* Legal Pages */}
+          <section>
+            <h2 className="text-[10px] font-mono uppercase tracking-[0.5em] text-zinc-400 mb-8">Legal & Policies</h2>
+            <div className="flex flex-col gap-4">
+              <Link to="/privacy-policy" className="text-lg font-medium hover:opacity-50">Privacy Policy</Link>
+              <Link to="/terms-of-service" className="text-lg font-medium hover:opacity-50">Terms of Service</Link>
             </div>
           </section>
         </div>
